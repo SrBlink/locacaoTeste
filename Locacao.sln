@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Distributed Services", "1 - Distributed Services", "{67D19607-D19D-4A10-BB70-FC7B3872856D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{96EA00E5-6EFB-43D2-A1B3-9437E7CD4C00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{5E46CE47-506E-4584-9405-925F6B0D9B32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{A1E5DC12-1882-44BE-8E00-A069DD1E734F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locacao.Application", "2 - Application\Locacao.Application\Locacao.Application\Locacao.Application.csproj", "{E456D02F-1945-40A9-B0DE-5101CB7844D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locacao.Domain", "3 - Domain\Locacao.Domain\Locacao.Domain.csproj", "{3A3B54F6-843E-4D8B-AA0E-B67B4F83E584}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data Access", "4.1 - Data Access", "{48CFBC5C-6E8B-44DD-966F-398E2CE8CCE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Cross Cuting", "4.2 - Cross Cuting", "{14B4C0FF-EFBF-4D5F-874B-98A7936C9B03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - Migrations", "4.3 - Migrations", "{6D678113-A5A7-484B-A96C-D07A5210C428}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locacao.Infrastructure.DataAccess", "4 - Infrastructure\4.1 - Data Access\Locacao.Infrastructure.DataAccess\Locacao.Infrastructure.DataAccess.csproj", "{FD56CC1A-BBD3-4553-8318-B352E9937788}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locacao.Infrastructure.CrossCuting", "4 - Infrastructure\4.2 - Cross Cuting\Locacao.Infrastructure.CrossCuting\Locacao.Infrastructure.CrossCuting.csproj", "{2D7EBD80-C968-4F90-9AF8-4D63124C1D75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locacao.Infrastructure.Migrations", "4 - Infrastructure\4.3 - Migrations\Locacao.Infrastructure.Migrations\Locacao.Infrastructure.Migrations.csproj", "{856C4798-A64B-4708-BF6F-2B8A170682AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locacao.Interface", "1 - Distributed Services\Locacao.Interface\Locacao.Interface.csproj", "{4F9BCB86-6800-45FC-B073-48EA60B58771}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E456D02F-1945-40A9-B0DE-5101CB7844D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E456D02F-1945-40A9-B0DE-5101CB7844D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E456D02F-1945-40A9-B0DE-5101CB7844D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E456D02F-1945-40A9-B0DE-5101CB7844D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3B54F6-843E-4D8B-AA0E-B67B4F83E584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3B54F6-843E-4D8B-AA0E-B67B4F83E584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3B54F6-843E-4D8B-AA0E-B67B4F83E584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3B54F6-843E-4D8B-AA0E-B67B4F83E584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD56CC1A-BBD3-4553-8318-B352E9937788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD56CC1A-BBD3-4553-8318-B352E9937788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD56CC1A-BBD3-4553-8318-B352E9937788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD56CC1A-BBD3-4553-8318-B352E9937788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D7EBD80-C968-4F90-9AF8-4D63124C1D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D7EBD80-C968-4F90-9AF8-4D63124C1D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7EBD80-C968-4F90-9AF8-4D63124C1D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D7EBD80-C968-4F90-9AF8-4D63124C1D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{856C4798-A64B-4708-BF6F-2B8A170682AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856C4798-A64B-4708-BF6F-2B8A170682AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856C4798-A64B-4708-BF6F-2B8A170682AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856C4798-A64B-4708-BF6F-2B8A170682AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F9BCB86-6800-45FC-B073-48EA60B58771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F9BCB86-6800-45FC-B073-48EA60B58771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F9BCB86-6800-45FC-B073-48EA60B58771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F9BCB86-6800-45FC-B073-48EA60B58771}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E456D02F-1945-40A9-B0DE-5101CB7844D5} = {96EA00E5-6EFB-43D2-A1B3-9437E7CD4C00}
+		{3A3B54F6-843E-4D8B-AA0E-B67B4F83E584} = {5E46CE47-506E-4584-9405-925F6B0D9B32}
+		{48CFBC5C-6E8B-44DD-966F-398E2CE8CCE8} = {A1E5DC12-1882-44BE-8E00-A069DD1E734F}
+		{14B4C0FF-EFBF-4D5F-874B-98A7936C9B03} = {A1E5DC12-1882-44BE-8E00-A069DD1E734F}
+		{6D678113-A5A7-484B-A96C-D07A5210C428} = {A1E5DC12-1882-44BE-8E00-A069DD1E734F}
+		{FD56CC1A-BBD3-4553-8318-B352E9937788} = {48CFBC5C-6E8B-44DD-966F-398E2CE8CCE8}
+		{2D7EBD80-C968-4F90-9AF8-4D63124C1D75} = {14B4C0FF-EFBF-4D5F-874B-98A7936C9B03}
+		{856C4798-A64B-4708-BF6F-2B8A170682AD} = {6D678113-A5A7-484B-A96C-D07A5210C428}
+		{4F9BCB86-6800-45FC-B073-48EA60B58771} = {67D19607-D19D-4A10-BB70-FC7B3872856D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34D45A78-4B21-490F-AFF3-5B55879E726E}
+	EndGlobalSection
+EndGlobal
