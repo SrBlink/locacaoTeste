@@ -1,29 +1,57 @@
-﻿using Locacao.Domain.Entities.Cliente;
+﻿
+using Locacao.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Locacao.Infrastructure.DataAccess.Context
 {
     public class SqlContext : DbContext
     {
-        public SqlContext()
+        public SqlContext(DbContextOptions<SqlContext> options) : base(options)
         {
-
         }
 
-        public SqlContext(DbContextOptions<SqlContext> options) : base(options) { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        { }
+
+        #region DbSet
 
         public DbSet<Cliente> Cliente { get; set; }
 
-        public override int SaveChanges()
+        #endregion DbSet
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) => modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            return base.SaveChanges();
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+            foreach (var entity in entities)
+            {
+                if (entity.State == EntityState.Added)
+                {
+                    // comando para adicionar quando for adicionar alguma entidade
+                }
+                
+               
+            }
+            return base.SaveChangesAsync(cancellationToken);
         }
 
+        public override int SaveChanges()
+        {
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
+            foreach (var entity in entities)
+            {
+                if (entity.State == EntityState.Added)
+                {
+                    // comando para adicionar quando for adicionar alguma entidade
+                }
+            }
+            return base.SaveChanges();
+        }
     }
 }

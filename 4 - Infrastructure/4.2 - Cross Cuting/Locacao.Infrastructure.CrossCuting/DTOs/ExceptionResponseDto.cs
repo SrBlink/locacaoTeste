@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Locacao.Infrastructure.CrossCuting.DTOs
+﻿namespace Locacao.Infrastructure.CrossCuting.DTOs
 {
-    public  class ExceptionResponseDto
+    public class ExceptionResponseDto
     {
         public int Codigo { get; set; }
         public string Mensagem { get; set; }

@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
+﻿using Locacao.Interface.Middleware;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Hosting;
-using Locacao.Interface.Middleware;
+using Microsoft.Extensions.Hosting;
+using ServiceStack.Configuration;
 
 namespace Locacao.Interface.Configuration
 {
@@ -31,7 +32,6 @@ namespace Locacao.Interface.Configuration
                             .AllowAnyMethod()
                             .AllowAnyHeader());
             });
-            
         }
 
         public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -57,7 +57,6 @@ namespace Locacao.Interface.Configuration
             });
 
             app.UseStaticFiles();
-            
         }
     }
 }

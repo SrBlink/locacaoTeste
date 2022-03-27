@@ -1,6 +1,4 @@
-﻿using Locacao.Domain.ApplicationService;
-using Locacao.Domain.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Locacao.Infrastructure.CrossCuting.IoC.ApplicationServiceInjection
 {
@@ -8,7 +6,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.ApplicationServiceInjection
     {
         public static void RegisterBindings(IServiceCollection services)
         {
-            services.AddScoped<IClienteApplicationService, ClienteApplicationService>();
+            //services.AddScoped<IClienteApplicationService, ClienteApplicationService>();
         }
     }
 }

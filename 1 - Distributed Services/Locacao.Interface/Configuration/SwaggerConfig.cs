@@ -18,38 +18,37 @@ namespace Locacao.Interface.Configuration
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "SMAR APD - Poupatempo - API",
-                    Description = "API para integrar os serviços referentes ao Poupatempo nos sistemas SMAR APD.",
-                    Contact = new OpenApiContact() { Name = "SMAR APD", Email = "desenvolvedor.pesqdesenv@smarapd.com.br", Url = new Uri("http://www.smarapd.com.br") }
+                    Title = "Locacao - API",
+                    Description = "API para fazer reserva de veiculos."
                 });
 
-                var securitySchema = new OpenApiSecurityScheme
-                {
-                    Description = "Cabeçalho de autorização JWT usando o esquema Bearer. Exemplo: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                };
-                c.AddSecurityDefinition("Bearer", securitySchema);
+                //var securitySchema = new OpenApiSecurityScheme
+                //{
+                //    Description = "Cabeçalho de autorização JWT usando o esquema Bearer. Exemplo: \"Authorization: Bearer {token}\"",
+                //    Name = "Authorization",
+                //    In = ParameterLocation.Header,
+                //    Type = SecuritySchemeType.ApiKey
+                //};
+                //c.AddSecurityDefinition("Bearer", securitySchema);
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
-                });
+                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                //{
+                //    {
+                //        new OpenApiSecurityScheme
+                //        {
+                //            Reference = new OpenApiReference
+                //            {
+                //                Type = ReferenceType.SecurityScheme,
+                //                Id = "Bearer"
+                //            }
+                //        },
+                //        Array.Empty<string>()
+                //    }
+                //});
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //c.IncludeXmlComments(xmlPath);
 
                 c.TagActionsBy(api =>
                 {
@@ -67,7 +66,6 @@ namespace Locacao.Interface.Configuration
                     throw new InvalidOperationException("Unable to determine tag for endpoint.");
                 });
                 c.DocInclusionPredicate((name, api) => true);
-
             });
         }
 
@@ -86,7 +84,7 @@ namespace Locacao.Interface.Configuration
                     }
                     else
                     {
-                        basePath = "poupatemposerver";
+                        basePath = "serverproduction";
                         serverUrl = $"https://{httpReq.Headers["Host"]}/{basePath}";
                         swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
                     }

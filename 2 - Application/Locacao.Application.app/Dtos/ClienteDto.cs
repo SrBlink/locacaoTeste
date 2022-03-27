@@ -1,4 +1,6 @@
-﻿namespace Locacao.Domain.Dtos
+﻿using System;
+
+namespace Locacao.Application.Dtos
 {
     public class ClienteDto
     {

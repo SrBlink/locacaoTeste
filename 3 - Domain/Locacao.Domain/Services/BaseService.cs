@@ -1,5 +1,7 @@
 ﻿using Locacao.Domain.Interfaces.Repository;
 using Locacao.Domain.Interfaces.Services;
+using System;
+using System.Collections.Generic;
 
 namespace Locacao.Domain.Services
 {

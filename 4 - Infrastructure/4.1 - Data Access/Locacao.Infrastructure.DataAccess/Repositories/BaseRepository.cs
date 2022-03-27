@@ -1,5 +1,9 @@
 ﻿using Locacao.Domain.Interfaces.Repository;
 using Locacao.Infrastructure.DataAccess.Context;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Locacao.Infrastructure.DataAccess.Database
 {

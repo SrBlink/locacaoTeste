@@ -1,6 +1,4 @@
-﻿using Locacao.Domain.Interfaces.Repository;
-using Locacao.Infrastructure.DataAccess.Repositories;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Locacao.Infrastructure.CrossCuting.IoC.RepositoryInjection
 {
@@ -8,7 +6,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.RepositoryInjection
     {
         public static void RegisterBindings(IServiceCollection services)
         {
-            services.AddScoped<IClienteRepository, ClienteRepository>();
+            //services.AddScoped<IClienteRepository, ClienteRepository>();
         }
     }
 }
