@@ -1,6 +1,7 @@
-﻿
-using Locacao.Domain.Entities;
+﻿using Locacao.Domain.Entities;
+using Locacao.Infrastructure.DataAccess.EntityMap;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,12 +10,19 @@ namespace Locacao.Infrastructure.DataAccess.Context
 {
     public class SqlContext : DbContext
     {
-        public SqlContext(DbContextOptions<SqlContext> options) : base(options)
+
+        private readonly IConfiguration _configuration;
+
+        public SqlContext(DbContextOptions<SqlContext> options,  IConfiguration configuration) : base(options)
         {
+            _configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        { }
+        {
+            var connectionString = _configuration["ConnectionStrings:locacaoserver"];
+            optionsBuilder.UseSqlServer(connectionString);
+        }
 
         #region DbSet
 
@@ -22,7 +30,11 @@ namespace Locacao.Infrastructure.DataAccess.Context
 
         #endregion DbSet
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) => modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ClienteMap());
+            //modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -34,8 +46,6 @@ namespace Locacao.Infrastructure.DataAccess.Context
                 {
                     // comando para adicionar quando for adicionar alguma entidade
                 }
-                
-               
             }
             return base.SaveChangesAsync(cancellationToken);
         }

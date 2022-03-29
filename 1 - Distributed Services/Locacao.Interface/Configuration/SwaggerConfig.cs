@@ -22,34 +22,6 @@ namespace Locacao.Interface.Configuration
                     Description = "API para fazer reserva de veiculos."
                 });
 
-                //var securitySchema = new OpenApiSecurityScheme
-                //{
-                //    Description = "Cabeçalho de autorização JWT usando o esquema Bearer. Exemplo: \"Authorization: Bearer {token}\"",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey
-                //};
-                //c.AddSecurityDefinition("Bearer", securitySchema);
-
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer"
-                //            }
-                //        },
-                //        Array.Empty<string>()
-                //    }
-                //});
-
-                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //c.IncludeXmlComments(xmlPath);
-
                 c.TagActionsBy(api =>
                 {
                     if (api.GroupName != null)

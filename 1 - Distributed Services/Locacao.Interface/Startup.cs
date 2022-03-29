@@ -3,6 +3,7 @@ using Locacao.Infrastructure.DataAccess.Context;
 using Locacao.Interface.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,8 +29,10 @@ namespace Locacao.Interface
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SqlContext sqlContext)
         {
+            sqlContext.Database.EnsureCreated();
+            sqlContext.Database.Migrate();
             app.UseApiConfiguration(env);
             app.UseSwaggerConfiguration();
         }

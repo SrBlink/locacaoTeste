@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Locacao.Infrastructure.DataAccess.Context;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Locacao.Infrastructure.CrossCuting.IoC.ServiceInjection
 {
@@ -7,6 +8,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.ServiceInjection
         public static void RegisterBindings(IServiceCollection services)
         {
             //services.AddScoped<IClienteService, ClienteService>();
+            services.AddDbContext<SqlContext>();
         }
     }
 }
