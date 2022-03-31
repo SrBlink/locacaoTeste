@@ -1,6 +1,7 @@
 ﻿using Locacao.Application.Dtos;
 using Locacao.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Locacao.Interface.Controllers
@@ -31,6 +32,14 @@ namespace Locacao.Interface.Controllers
         public async Task<IActionResult> Obter([FromQuery] string busca) {
 
             var result = await _clienteAppService.ObterAsync(busca);
+            return Ok(result);
+        }
+
+        [HttpPatch("/{id}/endereco")]
+        public async Task<IActionResult> AtualizarEndereco([FromRoute] Guid id , [FromBody] EnderecoDto endereco)
+        {
+
+            var result = await _clienteAppService.AtualizarEndereco(id , endereco);
             return Ok(result);
         }
 

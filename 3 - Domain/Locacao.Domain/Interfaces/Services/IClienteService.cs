@@ -1,4 +1,5 @@
 ﻿using Locacao.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,5 +9,6 @@ namespace Locacao.Domain.Interfaces.Services
     {
         Task AddAsync(Cliente clienteDto);
         Task<IEnumerable<Cliente>>ObterPorCpfNome(string busca);
+        Task UpdateEndereco(Guid id, Cliente cliente);
     }
 }
