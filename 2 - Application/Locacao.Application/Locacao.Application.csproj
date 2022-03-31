@@ -8,9 +8,4 @@
     <ProjectReference Include="..\..\3 - Domain\Locacao.Domain\Locacao.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ApplicationService\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>

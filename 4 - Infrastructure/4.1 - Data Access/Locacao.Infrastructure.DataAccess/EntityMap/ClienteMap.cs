@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Locacao.Infrastructure.DataAccess.EntityMap
 {
@@ -20,13 +18,34 @@ namespace Locacao.Infrastructure.DataAccess.EntityMap
                 .HasMaxLength(250)
                 .IsRequired(true);
 
-            builder.HasData(new Cliente[]
-            {
-                new Cliente(){
-                    Id = Guid.NewGuid(),
-                    Nome = "Joao"
-                }
-            });
+            builder.Property(x => x.Cpf)
+                .HasMaxLength(11)
+                .IsRequired(true);
+
+            builder.Property(x => x.DataNascimento)
+                .HasColumnType("date")
+                .IsRequired(true);
+
+            builder.Property(x => x.Cnh)
+                .HasMaxLength(50)
+                .IsRequired(true);
+
+            builder.Property(x => x.Logradouro)
+                .HasMaxLength(60)
+                .IsRequired(true);
+
+            builder.Property(x => x.Bairro)
+                .HasMaxLength(60)
+                .IsRequired(true);
+
+            builder.Property(x => x.NumeroResidencia)
+                .HasMaxLength(10)
+                .IsRequired(true);
+
+            builder.Property(x => x.Cidade)
+                .HasMaxLength(250)
+                .IsRequired(true);
+
         }
     }
 }

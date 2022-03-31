@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\2 - Application\Locacao.Application\Locacao.Application.csproj" />
     <ProjectReference Include="..\..\4 - Infrastructure\4.2 - Cross Cuting\Locacao.Infrastructure.CrossCuting.IoC\Locacao.Infrastructure.CrossCuting.IoC.csproj" />
     <ProjectReference Include="..\..\4 - Infrastructure\4.2 - Cross Cuting\Locacao.Infrastructure.CrossCuting\Locacao.Infrastructure.CrossCuting.csproj" />
   </ItemGroup>

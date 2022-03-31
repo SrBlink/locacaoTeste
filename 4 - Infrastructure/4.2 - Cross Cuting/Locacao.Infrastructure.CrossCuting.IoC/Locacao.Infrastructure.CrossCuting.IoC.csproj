@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\2 - Application\Locacao.Application.app\Locacao.Application.csproj" />
+    <ProjectReference Include="..\..\..\2 - Application\Locacao.Application\Locacao.Application.csproj" />
     <ProjectReference Include="..\..\4.1 - Data Access\Locacao.Infrastructure.DataAccess\Locacao.Infrastructure.DataAccess.csproj" />
   </ItemGroup>
 

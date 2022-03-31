@@ -10,10 +10,9 @@ namespace Locacao.Infrastructure.DataAccess.Context
 {
     public class SqlContext : DbContext
     {
-
         private readonly IConfiguration _configuration;
 
-        public SqlContext(DbContextOptions<SqlContext> options,  IConfiguration configuration) : base(options)
+        public SqlContext(DbContextOptions<SqlContext> options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
         }
@@ -27,13 +26,20 @@ namespace Locacao.Infrastructure.DataAccess.Context
         #region DbSet
 
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Fabricante> Fabricante { get; set; }
+        public DbSet<Modelo> Modelo { get; set; }
+        public DbSet<Veiculo> Veiculo { get; set; }
+        public DbSet<Reserva> Reserva { get; set; }
 
         #endregion DbSet
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClienteMap());
-            //modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+            modelBuilder.ApplyConfiguration(new FabricanteMap());
+            modelBuilder.ApplyConfiguration(new ModeloMap());
+            modelBuilder.ApplyConfiguration(new VeiculoMap());
+            modelBuilder.ApplyConfiguration(new ReservaMap());
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
