@@ -10,5 +10,6 @@ namespace Locacao.Application.Interfaces
     {
         Task<bool> CadastrarAsync(ClienteDto cliente);
         Task<IEnumerable<ClienteDto>> ObterAsync(string busca);
+        Task<bool> AtualizarEndereco(Guid id, EnderecoDto endereco);
     }
 }

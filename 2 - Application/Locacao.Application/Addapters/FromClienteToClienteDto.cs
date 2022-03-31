@@ -16,6 +16,7 @@ namespace Locacao.Application.Addapters
         {
             var clienteDto = entity.Select(x => new ClienteDto
             {
+                Id = x.Id,
                 Nome = x.Nome,
                 Cpf = x.Cpf,
                 Cnh = x.Cnh,
