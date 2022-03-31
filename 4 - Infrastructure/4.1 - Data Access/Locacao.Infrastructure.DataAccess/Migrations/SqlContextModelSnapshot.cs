@@ -85,12 +85,12 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8f3af45b-cde6-4a9d-9252-c7058b156609"),
+                            Id = new Guid("1588bf0b-823c-492f-b0c3-106627ed17e5"),
                             Nome = "FIAT"
                         },
                         new
                         {
-                            Id = new Guid("ee1f729e-0fa9-49f2-ba58-a0409db48776"),
+                            Id = new Guid("56189f42-f874-46b4-a19e-d2eeb23dcbd8"),
                             Nome = "VW"
                         },
                         new
@@ -100,17 +100,17 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("eda64892-591f-4531-a20b-b2cfc6e1b098"),
+                            Id = new Guid("f59728bf-c777-4c96-9a6c-8c111a36b412"),
                             Nome = "AUDI"
                         },
                         new
                         {
-                            Id = new Guid("fa6e4d45-d000-4fd8-909f-e4a4ee0033ca"),
+                            Id = new Guid("12a31de2-dcae-48c1-9719-2586111362d9"),
                             Nome = "MERCEDES"
                         },
                         new
                         {
-                            Id = new Guid("9dace77f-2291-426e-88e7-976df4c00099"),
+                            Id = new Guid("f6669ac6-09c7-4f5a-bea4-31b4fd6af8c4"),
                             Nome = "JEEP"
                         });
                 });
@@ -157,15 +157,12 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("DataDevolucao")
-                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("DataPrevistaDevolucao")
-                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("DataRetirada")
-                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<Guid>("VeiculoId")

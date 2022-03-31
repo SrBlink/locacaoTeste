@@ -27,5 +27,12 @@ namespace Locacao.Interface.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Obter([FromQuery] string busca) {
+
+            var result = await _clienteAppService.ObterAsync(busca);
+            return Ok(result);
+        }
+
     }
 }

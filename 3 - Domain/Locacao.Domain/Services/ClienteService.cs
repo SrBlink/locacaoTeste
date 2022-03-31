@@ -21,5 +21,11 @@ namespace Locacao.Domain.Services
         {
             await _repository.AddAsync(cliente);
         }
+
+        public async Task<IEnumerable<Cliente>> ObterPorCpfNome(string busca)
+        {
+            var cliente = await _repository.ObterPorCpfNome(busca);
+            return cliente;
+        }
     }
 }

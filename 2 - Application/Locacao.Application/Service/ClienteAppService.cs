@@ -4,6 +4,7 @@ using Locacao.Application.Interfaces;
 using Locacao.Domain.Entities;
 using Locacao.Domain.Interfaces.Services;
 using Locacao.Domain.Interfaces.UoW;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Locacao.Application.Service
@@ -31,5 +32,11 @@ namespace Locacao.Application.Service
             return await _uow.CommitAsync();
         }
 
+        public async Task<IEnumerable<ClienteDto>> ObterAsync(string busca)
+        {
+            var cliente = await _service.ObterPorCpfNome(busca);
+
+            return FromClienteToClienteDto.Adapt(cliente);
+        }
     }
 }

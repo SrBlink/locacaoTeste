@@ -9,6 +9,6 @@ namespace Locacao.Application.Interfaces
     public interface IClienteAppService
     {
         Task<bool> CadastrarAsync(ClienteDto cliente);
-
+        Task<IEnumerable<ClienteDto>> ObterAsync(string busca);
     }
 }

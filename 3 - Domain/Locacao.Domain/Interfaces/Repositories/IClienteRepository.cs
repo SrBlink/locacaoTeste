@@ -9,5 +9,6 @@ namespace Locacao.Domain.Interfaces.Repositories
     public interface IClienteRepository
     {
         Task AddAsync(Cliente cliente);
+        Task<IEnumerable<Cliente>> ObterPorCpfNome(string busca);
     }
 }

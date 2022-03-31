@@ -19,15 +19,15 @@ namespace Locacao.Infrastructure.DataAccess.EntityMap
 
             builder.Property(x => x.DataRetirada)
                 .HasColumnType("date")
-                .IsRequired(true);
+                .IsRequired(false);
 
             builder.Property(x => x.DataPrevistaDevolucao)
                 .HasColumnType("date")
-                .IsRequired(true);
+                .IsRequired(false);
 
             builder.Property(x => x.DataDevolucao)
                 .HasColumnType("date")
-                .IsRequired(true);
+                .IsRequired(false);
 
 
             builder.HasOne(x => x.Veiculo).WithMany().HasForeignKey(x => x.VeiculoId);

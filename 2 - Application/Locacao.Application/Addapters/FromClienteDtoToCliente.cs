@@ -17,7 +17,7 @@ namespace Locacao.Application.Addapters
                 DataNascimento = request.DataNascimento,
                 Id = Guid.NewGuid(),
                 Logradouro = request.Logradouro,
-                NumeroResidencia = request.ResidenciaNumero
+                NumeroResidencia = request.NumeroResidencia
             };
         }
     }

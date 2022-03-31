@@ -84,9 +84,9 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                     Data = table.Column<DateTime>(type: "date", nullable: false),
                     ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     VeiculoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DataRetirada = table.Column<DateTime>(type: "date", nullable: false),
-                    DataPrevistaDevolucao = table.Column<DateTime>(type: "date", nullable: false),
-                    DataDevolucao = table.Column<DateTime>(type: "date", nullable: false)
+                    DataRetirada = table.Column<DateTime>(type: "date", nullable: true),
+                    DataPrevistaDevolucao = table.Column<DateTime>(type: "date", nullable: true),
+                    DataDevolucao = table.Column<DateTime>(type: "date", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -110,12 +110,12 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                 columns: new[] { "Id", "Nome" },
                 values: new object[,]
                 {
-                    { new Guid("8f3af45b-cde6-4a9d-9252-c7058b156609"), "FIAT" },
-                    { new Guid("ee1f729e-0fa9-49f2-ba58-a0409db48776"), "VW" },
+                    { new Guid("1588bf0b-823c-492f-b0c3-106627ed17e5"), "FIAT" },
+                    { new Guid("56189f42-f874-46b4-a19e-d2eeb23dcbd8"), "VW" },
                     { new Guid("6d0d79ba-e365-4a8a-839d-5e7860f5fce9"), "FORD" },
-                    { new Guid("eda64892-591f-4531-a20b-b2cfc6e1b098"), "AUDI" },
-                    { new Guid("fa6e4d45-d000-4fd8-909f-e4a4ee0033ca"), "MERCEDES" },
-                    { new Guid("9dace77f-2291-426e-88e7-976df4c00099"), "JEEP" }
+                    { new Guid("f59728bf-c777-4c96-9a6c-8c111a36b412"), "AUDI" },
+                    { new Guid("12a31de2-dcae-48c1-9719-2586111362d9"), "MERCEDES" },
+                    { new Guid("f6669ac6-09c7-4f5a-bea4-31b4fd6af8c4"), "JEEP" }
                 });
 
             migrationBuilder.InsertData(
