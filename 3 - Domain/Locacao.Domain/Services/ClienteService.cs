@@ -3,18 +3,14 @@ using Locacao.Domain.Interfaces.Repositories;
 using Locacao.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Locacao.Domain.Services
 {
-    public class ClienteService : BaseService , IClienteService
+    public class ClienteService : BaseService, IClienteService
     {
-        private readonly IClienteRepository _repository;
-        public ClienteService(IClienteRepository repository)
+        public ClienteService(IClienteRepository repository) : base(repository)
         {
-            _repository = repository; 
-
         }
 
         public async Task AddAsync(Cliente cliente)
@@ -26,6 +22,18 @@ namespace Locacao.Domain.Services
         {
             var cliente = await _repository.ObterPorCpfNome(busca);
             return cliente;
+        }
+
+        public async Task UpdateEndereco(Guid id, Cliente clienteModel)
+        {
+            var cliente = await GetByIdAsync(id);
+
+            cliente.Logradouro = clienteModel.Logradouro;
+            cliente.NumeroResidencia = clienteModel.NumeroResidencia;
+            cliente.Bairro = clienteModel.Bairro;
+            cliente.Cidade = clienteModel.Cidade;
+
+            _repository.Update(cliente);
         }
     }
 }
