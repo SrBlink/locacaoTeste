@@ -1,6 +1,7 @@
-﻿
-using Locacao.Domain.Entities;
+﻿using Locacao.Domain.Entities;
+using Locacao.Infrastructure.DataAccess.EntityMap;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,20 +10,37 @@ namespace Locacao.Infrastructure.DataAccess.Context
 {
     public class SqlContext : DbContext
     {
-        public SqlContext(DbContextOptions<SqlContext> options) : base(options)
+        private readonly IConfiguration _configuration;
+
+        public SqlContext(DbContextOptions<SqlContext> options, IConfiguration configuration) : base(options)
         {
+            _configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        { }
+        {
+            var connectionString = _configuration["ConnectionStrings:locacaoserver"];
+            optionsBuilder.UseSqlServer(connectionString);
+        }
 
         #region DbSet
 
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Fabricante> Fabricante { get; set; }
+        public DbSet<Modelo> Modelo { get; set; }
+        public DbSet<Veiculo> Veiculo { get; set; }
+        public DbSet<Reserva> Reserva { get; set; }
 
         #endregion DbSet
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) => modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new FabricanteMap());
+            modelBuilder.ApplyConfiguration(new ModeloMap());
+            modelBuilder.ApplyConfiguration(new VeiculoMap());
+            modelBuilder.ApplyConfiguration(new ReservaMap());
+        }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -34,8 +52,6 @@ namespace Locacao.Infrastructure.DataAccess.Context
                 {
                     // comando para adicionar quando for adicionar alguma entidade
                 }
-                
-               
             }
             return base.SaveChangesAsync(cancellationToken);
         }

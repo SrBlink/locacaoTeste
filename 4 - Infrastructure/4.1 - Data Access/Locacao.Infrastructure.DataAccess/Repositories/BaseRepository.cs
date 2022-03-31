@@ -1,66 +1,56 @@
-﻿using Locacao.Domain.Interfaces.Repository;
-using Locacao.Infrastructure.DataAccess.Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Locacao.Infrastructure.DataAccess.Database
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity, TContext>
+        where TEntity : class
+        where TContext : DbContext
     {
-        private readonly SqlContext _sqlContext;
+        protected readonly TContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public BaseRepository(SqlContext sqlContext)
+        public BaseRepository(TContext context)
         {
-            _sqlContext = sqlContext;
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
         public void Add(TEntity obj)
         {
-            try
-            {
-                _sqlContext.Set<TEntity>().Add(obj);
-                _sqlContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _dbSet.Add(obj);
+        }
+
+        public virtual async Task AddAsync(TEntity obj)
+        {
+            await _dbSet.AddAsync(obj);
         }
 
         public void Delete(TEntity obj)
         {
-            try
-            {
-                _sqlContext.Set<TEntity>().Remove(obj);
-                _sqlContext.SaveChanges();
-            }
-            catch (Exception)
-            {
-            }
+            _dbSet.Remove(obj);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _sqlContext.Set<TEntity>().ToList();
+            return _dbSet;
         }
 
         public TEntity GetById(Guid id)
         {
-            return _sqlContext.Set<TEntity>().Find(id);
+            return _dbSet.Find(id);
+        }
+
+        public virtual async Task<TEntity> GetByIdAsync(Guid id)
+        {
+            return await _dbSet.FindAsync(id);
         }
 
         public void Update(TEntity obj)
         {
-            try
-            {
-                _sqlContext.Entry(obj).State = EntityState.Modified;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _context.Entry(obj).State = EntityState.Modified;
         }
     }
 }

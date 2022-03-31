@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="ServiceStack" Version="6.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
@@ -12,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\2 - Application\Locacao.Application\Locacao.Application.csproj" />
     <ProjectReference Include="..\..\4 - Infrastructure\4.2 - Cross Cuting\Locacao.Infrastructure.CrossCuting.IoC\Locacao.Infrastructure.CrossCuting.IoC.csproj" />
     <ProjectReference Include="..\..\4 - Infrastructure\4.2 - Cross Cuting\Locacao.Infrastructure.CrossCuting\Locacao.Infrastructure.CrossCuting.csproj" />
   </ItemGroup>
