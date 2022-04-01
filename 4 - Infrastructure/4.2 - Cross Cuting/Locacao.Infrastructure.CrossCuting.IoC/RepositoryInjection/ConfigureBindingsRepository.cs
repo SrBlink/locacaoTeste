@@ -9,6 +9,8 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.RepositoryInjection
         public static void RegisterBindings(IServiceCollection services)
         {
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+            services.AddScoped<IModeloRepository, ModeloRepository>();
         }
     }
 }
