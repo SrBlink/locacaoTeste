@@ -85,12 +85,12 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1588bf0b-823c-492f-b0c3-106627ed17e5"),
+                            Id = new Guid("61d4e90e-6d25-4f7f-864c-431d95fbec68"),
                             Nome = "FIAT"
                         },
                         new
                         {
-                            Id = new Guid("56189f42-f874-46b4-a19e-d2eeb23dcbd8"),
+                            Id = new Guid("10f71d32-9501-4ba1-adbc-80627f206184"),
                             Nome = "VW"
                         },
                         new
@@ -100,17 +100,17 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f59728bf-c777-4c96-9a6c-8c111a36b412"),
+                            Id = new Guid("d764e865-1320-4f1f-8e45-89b85e799f75"),
                             Nome = "AUDI"
                         },
                         new
                         {
-                            Id = new Guid("12a31de2-dcae-48c1-9719-2586111362d9"),
+                            Id = new Guid("41f0ca61-e30a-44c0-9528-54c8c2da9c97"),
                             Nome = "MERCEDES"
                         },
                         new
                         {
-                            Id = new Guid("f6669ac6-09c7-4f5a-bea4-31b4fd6af8c4"),
+                            Id = new Guid("3cf2a334-7be3-4aca-bb38-d3b5be815e95"),
                             Nome = "JEEP"
                         });
                 });
@@ -138,9 +138,39 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                     b.HasData(
                         new
                         {
+                            Id = new Guid("aeb99c70-bf83-4c0e-a8e4-7a414ad173d9"),
+                            FabricanteId = new Guid("61d4e90e-6d25-4f7f-864c-431d95fbec68"),
+                            Nome = "UNO"
+                        },
+                        new
+                        {
+                            Id = new Guid("ce760ddb-22de-4cdc-b840-216d6c657a1f"),
+                            FabricanteId = new Guid("10f71d32-9501-4ba1-adbc-80627f206184"),
+                            Nome = "AMAROK"
+                        },
+                        new
+                        {
                             Id = new Guid("737b2921-ae1a-4529-acd1-cf0c8ceec90d"),
                             FabricanteId = new Guid("6d0d79ba-e365-4a8a-839d-5e7860f5fce9"),
-                            Nome = "ModelT"
+                            Nome = "AEROSTAR"
+                        },
+                        new
+                        {
+                            Id = new Guid("a6c53c0e-2c6e-4ad6-b594-003d67fc7dce"),
+                            FabricanteId = new Guid("d764e865-1320-4f1f-8e45-89b85e799f75"),
+                            Nome = "R8 GT SPYDER"
+                        },
+                        new
+                        {
+                            Id = new Guid("5827782d-924c-4307-a4df-13756af8a9e2"),
+                            FabricanteId = new Guid("41f0ca61-e30a-44c0-9528-54c8c2da9c97"),
+                            Nome = "CITAN"
+                        },
+                        new
+                        {
+                            Id = new Guid("c86909e7-0514-44d6-a8d4-c7414fcfb1c3"),
+                            FabricanteId = new Guid("3cf2a334-7be3-4aca-bb38-d3b5be815e95"),
+                            Nome = "CHEROKEE"
                         });
                 });
 

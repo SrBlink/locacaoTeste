@@ -8,6 +8,8 @@ namespace Locacao.Application.Dtos
     {
         public string Nome { get; set; }
 
+        public Guid FabricanteId { get; set; }
+
         public FabricanteDto Fabricante { get; set; }
     }
 }

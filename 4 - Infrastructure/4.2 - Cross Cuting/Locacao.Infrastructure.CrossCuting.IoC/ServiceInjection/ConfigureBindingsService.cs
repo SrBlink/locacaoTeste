@@ -10,6 +10,8 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.ServiceInjection
         public static void RegisterBindings(IServiceCollection services)
         {
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IVeiculoService, VeiculoService>();
+            services.AddScoped<IModeloService, ModeloService>();
             services.AddDbContext<SqlContext>();
         }
     }

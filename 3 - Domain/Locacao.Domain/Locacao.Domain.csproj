@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\4 - Infrastructure\4.2 - Cross Cuting\Locacao.Infrastructure.CrossCuting\Locacao.Infrastructure.CrossCuting.csproj" />
+  </ItemGroup>
+
 </Project>

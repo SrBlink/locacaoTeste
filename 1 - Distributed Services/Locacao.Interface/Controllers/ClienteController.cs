@@ -35,7 +35,7 @@ namespace Locacao.Interface.Controllers
             return Ok(result);
         }
 
-        [HttpPatch("/{id}/endereco")]
+        [HttpPatch("{id}/endereco")]
         public async Task<IActionResult> AtualizarEndereco([FromRoute] Guid id , [FromBody] EnderecoDto endereco)
         {
 
