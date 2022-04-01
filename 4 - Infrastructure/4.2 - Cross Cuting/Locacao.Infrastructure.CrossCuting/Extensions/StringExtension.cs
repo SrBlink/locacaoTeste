@@ -37,6 +37,10 @@ namespace Locacao.Infrastructure.CrossCuting.Extensions
             return Regex.Replace(str, @"[*/.-]", string.Empty).Trim();
         }
 
+        public static string RemoveMaskPlaca(this String str) {
+            return Regex.Replace(str, @"[?^\W_]", string.Empty).Trim();
+        }
+
 
         public static string Compress(this String str)
         {
@@ -401,6 +405,33 @@ namespace Locacao.Infrastructure.CrossCuting.Extensions
             if (int.TryParse(s, out int result))
                 return result;
             return null;
+        }
+        public static bool ValidarPlaca(this string placa)
+        {
+            placa = RemoveMaskPlaca(placa);
+
+            if (string.IsNullOrEmpty(placa)) { return false; }
+
+            if (placa.Length > 8) { return false; }
+
+            /*
+             *  Verifica se o caractere da posição 4 é uma letra, se sim, aplica a validação para o formato de placa do Mercosul,
+             *  senão, aplica a validação do formato de placa padrão.
+             */
+            if (char.IsLetter(placa, 4))
+            {
+                /*
+                 *  Verifica se a placa está no formato: três letras, um número, uma letra e dois números.
+                 */
+                var padraoMercosul = new Regex("[a-zA-Z]{3}[0-9]{1}[a-zA-Z]{1}[0-9]{2}");
+                return padraoMercosul.IsMatch(placa);
+            }
+            else
+            {
+                // Verifica se os 3 primeiros caracteres são letras e se os 4 últimos são números.
+                var padraoNormal = new Regex("[a-zA-Z]{3}[0-9]{4}");
+                return padraoNormal.IsMatch(placa);
+            }
         }
 
     }

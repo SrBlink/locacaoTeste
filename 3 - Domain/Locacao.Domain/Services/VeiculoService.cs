@@ -2,6 +2,7 @@
 using Locacao.Domain.Interfaces.Repositories;
 using Locacao.Domain.Interfaces.Services;
 using Locacao.Infrastructure.CrossCuting.Exceptions;
+using Locacao.Infrastructure.CrossCuting.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,8 +22,14 @@ namespace Locacao.Domain.Services
 
         public async Task AddAsync(Veiculo veiculo)
         {
+            veiculo.Placa = veiculo.Placa.RemoveMaskPlaca();
+
+            var placaValida = veiculo.Placa.ValidarPlaca();
+
+            if (!placaValida) throw new DomainException("Informe uma placa válida.");
+
             var existeVeiculo = await _repository.ObterPorPlacaAsync(veiculo.Placa);
-            
+
             if (existeVeiculo != null) throw new DomainException("Já existe um veiculo cadastrado com esta placa.");
 
             await _modeloService.GetByIdAsync(veiculo.ModeloId);
