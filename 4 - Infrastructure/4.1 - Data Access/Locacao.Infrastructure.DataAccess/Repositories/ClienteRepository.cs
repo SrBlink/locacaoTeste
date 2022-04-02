@@ -16,19 +16,19 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
         {
         }
 
-        public async Task<IEnumerable<Cliente>> ObterPorCpfNome(string busca)
+        public async Task<IEnumerable<Cliente>> ObterPorCpfNomeAsync(string busca)
         {
             var cliente = await _context.Cliente.Where(x => EF.Functions.Like(x.Nome, $"%{busca.ToLower()}%") || EF.Functions.Like(x.Cpf, $"%{busca.ToLower()}%")).ToListAsync();
             return cliente;
         }
 
-        public async Task<Cliente> ObterPorCpfOuCnh(string cpf, string cnh)
+        public async Task<Cliente> ObterPorCpfOuCnhAsync(string cpf, string cnh)
         {
             var cliente = await _context.Cliente.Where(x => x.Cpf == cpf || x.Cnh == cnh).FirstOrDefaultAsync();
             return cliente;
         }
 
-        public async Task<bool> VerifyExists(Guid id) {
+        public async Task<bool> VerifyExistsAsync(Guid id) {
             return await _context.Cliente.Where(x => x.Id == id).AnyAsync();
         }
     }

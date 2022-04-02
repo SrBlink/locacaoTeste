@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Locacao.Application.Dtos
 {
-    public class EnderecoDto
+    public class ClienteEnderecoRequestPatchDto : BaseRequestDto
     {
         public string Logradouro { get; set; }
         public string NumeroResidencia { get; set; }

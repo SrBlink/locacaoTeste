@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locacao.Interface.Controllers
 {
+    [Produces("application/json")]
     [Route("[controller]")]
     [ApiController]
     public class VeiculoController : ControllerBase
@@ -17,13 +18,20 @@ namespace Locacao.Interface.Controllers
             _appService = appService;
         }
 
-       
+        /// <summary>
+        /// Cadastrar veiculo
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(VeiculoPostDto veiculo) {
+        public async Task<IActionResult> Cadastrar(VeiculoRequestPostDto veiculo) {
             var result = await _appService.CadastrarAsync(veiculo);
             return Ok(result);
         }
 
+        /// <summary>
+        /// Consultar veiculo
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("lista")]
         public async Task<IActionResult> Consultar([FromQuery] string busca)
         {
@@ -32,11 +40,15 @@ namespace Locacao.Interface.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Consultar veiculo por modelo ou fabricante
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("modelo")]
         public async Task<IActionResult> ConsultarPorModeloFabricante([FromQuery] string busca)
         {
 
-            var result = await _appService.ConsultarPorModeloFabricante(busca);
+            var result = await _appService.ConsultarPorModeloFabricanteAsync(busca);
             return Ok(result);
         }
 

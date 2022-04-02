@@ -1,5 +1,6 @@
 ﻿using Locacao.Application.Dtos;
 using Locacao.Domain.Entities;
+using System;
 
 namespace Locacao.Application.Addapters
 {
@@ -9,7 +10,7 @@ namespace Locacao.Application.Addapters
         {
             return new Reserva
             {
-                Data = dto.Data,
+                Data = DateTime.Now,
                 ClienteId = dto.ClienteId,
                 VeiculoId = dto.VeiculoId,
                 DataRetirada = dto.DataRetirada,

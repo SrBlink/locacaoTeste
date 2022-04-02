@@ -12,5 +12,8 @@ namespace Locacao.Application.Interfaces
         Task<bool> CadastrarAsync(ReservaRequestPostDto reserva);
         Task<IEnumerable<ReservaResponseGetDto>> ObterRerservasClienteAsync(Guid clienteId);
         Task<IEnumerable<ReservaResponseGetDto>> ObterReservasAsync(DateTime dataInicial, DateTime dataFinal);
+        Task<bool> AtualizarReservaClienteAsync(Guid id, ReservaRequestPatchDto reservaData);
+        Task<bool> FinalizarReservaAsync(Guid id, ReservaFinalizarRequestPatchDto reserva);
+        Task<IEnumerable<ReservaResponseGetDto>> ObterReservasVencidasAsync();
     }
 }

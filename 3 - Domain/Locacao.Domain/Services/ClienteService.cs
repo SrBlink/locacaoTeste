@@ -29,20 +29,20 @@ namespace Locacao.Domain.Services
 
             if (cliente.DataNascimento > DateTime.Now.AddYears(-18)) throw new DomainException("O Cliente não pode ter menos de 18 anos.");
 
-            var existeCliente = await _repository.ObterPorCpfOuCnh(cliente.Cpf, cliente.Cnh);
+            var existeCliente = await _repository.ObterPorCpfOuCnhAsync(cliente.Cpf, cliente.Cnh);
 
             if (existeCliente != null) throw new DomainException("Já existe um cadastro com mesmo cpf ou cnh.");
 
             await _repository.AddAsync(cliente);
         }
 
-        public async Task<IEnumerable<Cliente>> ObterPorCpfNome(string busca)
+        public async Task<IEnumerable<Cliente>> ObterPorCpfNomeAsync(string busca)
         {
-            var cliente = await _repository.ObterPorCpfNome(busca);
+            var cliente = await _repository.ObterPorCpfNomeAsync(busca);
             return cliente;
         }
 
-        public async Task UpdateEndereco(Guid id, Cliente clienteModel)
+        public async Task AtualizarEnderecoAsync(Guid id, Cliente clienteModel)
         {
             var cliente = await GetByIdAsync(id);
 
@@ -63,9 +63,9 @@ namespace Locacao.Domain.Services
             return cliente;
         }
 
-        public async Task VerifyExists(Guid id)
+        public async Task VerifyExistsAsync(Guid id)
         {
-            var existCliente = await _repository.VerifyExists(id);
+            var existCliente = await _repository.VerifyExistsAsync(id);
 
             if (!existCliente) throw new DomainException("Cliente não encontrado.");
         }

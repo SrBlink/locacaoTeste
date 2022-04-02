@@ -6,8 +6,8 @@ namespace Locacao.Application.Interfaces
 {
     public interface IVeiculoAppService
     {
-        Task<bool> CadastrarAsync(VeiculoPostDto veiculo);
-        Task<IEnumerable<VeiculoGetDto>> ConsultarPorPlacaAsync(string busca);
-        Task<IEnumerable<VeiculoGetDto>> ConsultarPorModeloFabricante(string busca);
+        Task<bool> CadastrarAsync(VeiculoRequestPostDto veiculo);
+        Task<IEnumerable<VeiculoResponseGetDto>> ConsultarPorPlacaAsync(string busca);
+        Task<IEnumerable<VeiculoResponseGetDto>> ConsultarPorModeloFabricanteAsync(string busca);
     }
 }

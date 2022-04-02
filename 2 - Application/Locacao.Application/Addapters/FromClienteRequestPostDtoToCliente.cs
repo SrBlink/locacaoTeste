@@ -4,9 +4,9 @@ using System;
 
 namespace Locacao.Application.Addapters
 {
-    public static class FromClienteDtoToCliente
+    public static class FromClienteRequestPostDtoToCliente
     {
-        public static Cliente Adapt(ClienteDto request)
+        public static Cliente Adapt(ClienteRequestPostDto request)
         {
             return new Cliente() {
                 Nome = request.Nome,
@@ -15,7 +15,6 @@ namespace Locacao.Application.Addapters
                 Bairro = request.Bairro,
                 Cidade = request.Cidade,
                 DataNascimento = request.DataNascimento,
-                Id = Guid.NewGuid(),
                 Logradouro = request.Logradouro,
                 NumeroResidencia = request.NumeroResidencia
             };

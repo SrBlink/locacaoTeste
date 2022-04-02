@@ -2,6 +2,7 @@
 using Locacao.Infrastructure.CrossCuting.IoC.RepositoryInjection;
 using Locacao.Infrastructure.CrossCuting.IoC.ServiceInjection;
 using Locacao.Infrastructure.CrossCuting.IoC.UnitOfWorkInjection;
+using Locacao.Infrastructure.CrossCuting.IoC.ValidatorInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,8 @@ namespace Locacao.Infrastructure.CrossCuting.IoC
             ConfigureBindingsRepository.RegisterBindings(services);
             ConfigureBindingsApplicationService.RegisterBindings(services);
             ConfigureBindingsUnitOfWork.RegisterBindings(services);
-            
+            ConfigureBindingsValidator.RegisterBindings(services);
+
 
         }
     }

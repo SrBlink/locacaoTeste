@@ -46,5 +46,16 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
                          .Include(x => x.Veiculo)
                          .ToListAsync();
         }
+
+        public async Task<IEnumerable<Reserva>> ObterReservasVencidasAsync()
+        {
+            var now = DateTime.Now.Date;
+
+            return await _context.Reserva
+                         .Where(x => x.DataPrevistaDevolucao < now && x.DataDevolucao == null)
+                         .Include(x => x.Cliente)
+                         .Include(x => x.Veiculo)
+                         .ToListAsync();
+        }
     }
 }

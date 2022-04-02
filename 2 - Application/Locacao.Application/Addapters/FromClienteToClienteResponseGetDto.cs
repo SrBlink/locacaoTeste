@@ -5,16 +5,11 @@ using System.Linq;
 
 namespace Locacao.Application.Addapters
 {
-    public static class FromClienteToClienteDto
+    public static class FromClienteToClienteResponseGetDto
     {
-        public static ClienteDto Adapt(Cliente entity)
+        public static IEnumerable<ClienteResponseGetDto> Adapt(IEnumerable<Cliente> entity)
         {
-            return new ClienteDto();
-        }
-
-        public static IEnumerable<ClienteDto> Adapt(IEnumerable<Cliente> entity)
-        {
-            var clienteDto = entity.Select(x => new ClienteDto
+            var clienteDto = entity.Select(x => new ClienteResponseGetDto
             {
                 Id = x.Id,
                 Nome = x.Nome,

@@ -20,27 +20,27 @@ namespace Locacao.Application.Service
             _uow = uow;
         }
 
-        public async Task<bool> CadastrarAsync(VeiculoPostDto veiculoDto)
+        public async Task<bool> CadastrarAsync(VeiculoRequestPostDto veiculoDto)
         {
-            var veiculo = FromVeiculoPostDtoToVeiculo.Adapt(veiculoDto);
+            var veiculo = FromVeiculoRequestPostDtoToVeiculo.Adapt(veiculoDto);
 
             await _service.AddAsync(veiculo);
 
             return await _uow.CommitAsync();
         }
 
-        public async Task<IEnumerable<VeiculoGetDto>> ConsultarPorModeloFabricante(string busca)
+        public async Task<IEnumerable<VeiculoResponseGetDto>> ConsultarPorModeloFabricanteAsync(string busca)
         {
-            IEnumerable<Veiculo> veiculo = await _service.ConsultarPorModeloFabricante(busca);
+            IEnumerable<Veiculo> veiculo = await _service.ConsultarPorModeloFabricanteAsync(busca);
 
-            return FromVeiculoToVeiculoDto.Adapt(veiculo);
+            return FromVeiculoToVeiculoResponseGetDto.Adapt(veiculo);
         }
 
-        public async Task<IEnumerable<VeiculoGetDto>> ConsultarPorPlacaAsync(string busca)
+        public async Task<IEnumerable<VeiculoResponseGetDto>> ConsultarPorPlacaAsync(string busca)
         {
             IEnumerable<Veiculo> veiculo = await _service.ConsultarPorPlacaAsync(busca);
 
-            return FromVeiculoToVeiculoDto.Adapt(veiculo);
+            return FromVeiculoToVeiculoResponseGetDto.Adapt(veiculo);
 
         }
     }

@@ -38,6 +38,9 @@ namespace Locacao.Interface.Configuration
                     throw new InvalidOperationException("Unable to determine tag for endpoint.");
                 });
                 c.DocInclusionPredicate((name, api) => true);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 

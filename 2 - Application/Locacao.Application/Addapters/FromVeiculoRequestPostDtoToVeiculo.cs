@@ -4,9 +4,9 @@ using System;
 
 namespace Locacao.Application.Addapters
 {
-    public class FromVeiculoPostDtoToVeiculo
+    public class FromVeiculoRequestPostDtoToVeiculo
     {
-        public static Veiculo Adapt(VeiculoPostDto dto)
+        public static Veiculo Adapt(VeiculoRequestPostDto dto)
         {
             return new Veiculo
             {

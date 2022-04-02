@@ -12,5 +12,8 @@ namespace Locacao.Domain.Interfaces.Repositories
         Task AddAsync(Reserva reserva);
         Task<IEnumerable<Reserva>> ObterReservasClienteAsync(Guid clienteId);
         Task<IEnumerable<Reserva>> ObterReservasAsync(DateTime dataInicial, DateTime dataFinal);
+        Task<Reserva> GetByIdAsync(Guid id);
+        void Update(Reserva reserva);
+        Task<IEnumerable<Reserva>> ObterReservasVencidasAsync();
     }
 }

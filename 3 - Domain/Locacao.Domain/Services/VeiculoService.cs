@@ -52,15 +52,15 @@ namespace Locacao.Domain.Services
             return veiculos;
         }
 
-        public async Task<IEnumerable<Veiculo>> ConsultarPorModeloFabricante(string busca)
+        public async Task<IEnumerable<Veiculo>> ConsultarPorModeloFabricanteAsync(string busca)
         {
-            IEnumerable<Veiculo> veiculos = await _repository.ConsultarPorModeloFabricante(busca);
+            IEnumerable<Veiculo> veiculos = await _repository.ConsultarPorModeloFabricanteAsync(busca);
             return veiculos;
         }
 
-        public async Task VerifyExists(Guid id)
+        public async Task VerifyExistsAsync(Guid id)
         {
-            var existVeiculo = await _repository.VerifyExists(id);
+            var existVeiculo = await _repository.VerifyExistsAsync(id);
 
             if (!existVeiculo) throw new DomainException("Veiculo não encontrado.");
         }

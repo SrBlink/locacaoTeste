@@ -11,5 +11,8 @@ namespace Locacao.Domain.Interfaces.Services
         Task CadastrarAsync(Reserva reserva);
         Task<IEnumerable<Reserva>> ObterReservasClienteAsync(Guid clienteId);
         Task<IEnumerable<Reserva>> ObterReservasAsync(DateTime dataInicial, DateTime dataFinal);
+        Task AtualizarReservaClienteAsync(Guid id, Reserva reservaModel);
+        Task FinalizarReservaAsync(Guid id, Reserva reservaModel);
+        Task<IEnumerable<Reserva>> ObterReservasVencidasAsync();
     }
 }

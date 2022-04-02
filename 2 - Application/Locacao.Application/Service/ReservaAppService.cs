@@ -22,11 +22,30 @@ namespace Locacao.Application.Service
             _uow = uow;
         }
 
+        public async Task<bool> AtualizarReservaClienteAsync(Guid id, ReservaRequestPatchDto reservaData)
+        {
+            var reservaModel = FromReservaRequestPatchDtoToReserva.Adapt(reservaData);
+
+            await _service.AtualizarReservaClienteAsync(id, reservaModel);
+
+            return await _uow.CommitAsync();
+            
+        }
+
         public async Task<bool> CadastrarAsync(ReservaRequestPostDto reservaDto)
         {
             var reserva = FromReservaRequestPostDtoToReserva.Adapt(reservaDto);
 
             await _service.CadastrarAsync(reserva);
+
+            return await _uow.CommitAsync();
+        }
+
+        public async Task<bool> FinalizarReservaAsync(Guid id, ReservaFinalizarRequestPatchDto reserva)
+        {
+            var reservaModel = FromReservaFinalizarRequestPatchDtoToReserva.Adapt(reserva);
+
+            await _service.FinalizarReservaAsync(id, reservaModel);
 
             return await _uow.CommitAsync();
         }
@@ -43,6 +62,14 @@ namespace Locacao.Application.Service
             var reservas = await _service.ObterReservasAsync(dataInicial, dataFinal);
 
             return FromReservaToReservaResponseGetDto.Adapt(reservas);
+        }
+
+        public async Task<IEnumerable<ReservaResponseGetDto>> ObterReservasVencidasAsync()
+        {
+            var reservasVencidas = await _service.ObterReservasVencidasAsync();
+
+            return FromReservaToReservaResponseGetDto.Adapt(reservasVencidas);
+
         }
     }
 }

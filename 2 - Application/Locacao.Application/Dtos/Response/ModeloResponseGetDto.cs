@@ -4,8 +4,12 @@ using System.Text;
 
 namespace Locacao.Application.Dtos
 {
-    public class FabricanteDto
+    public class ModeloResponseGetDto
     {
         public string Nome { get; set; }
+
+        public Guid FabricanteId { get; set; }
+
+        public FabricanteResponseGetDto Fabricante { get; set; }
     }
 }
