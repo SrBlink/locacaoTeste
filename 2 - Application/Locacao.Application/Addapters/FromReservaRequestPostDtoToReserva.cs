@@ -14,6 +14,7 @@ namespace Locacao.Application.Addapters
                 ClienteId = dto.ClienteId,
                 VeiculoId = dto.VeiculoId,
                 DataRetirada = dto.DataRetirada,
+                DataPrevistaDevolucao = dto.DataPrevistaDevolucao,
             };
         }
     }

@@ -9,5 +9,6 @@ namespace Locacao.Application.Dtos
         public Guid ClienteId { get; set; }
         public Guid VeiculoId { get; set; }
         public DateTime? DataRetirada { get; set; }
+        public DateTime? DataPrevistaDevolucao { get; set; }
     }
 }

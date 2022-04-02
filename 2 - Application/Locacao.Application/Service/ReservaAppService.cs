@@ -1,6 +1,7 @@
 ﻿using Locacao.Application.Addapters;
 using Locacao.Application.Dtos;
 using Locacao.Application.Interfaces;
+using Locacao.Application.Validations;
 using Locacao.Domain.Interfaces.Services;
 using Locacao.Domain.Interfaces.UoW;
 using System;
@@ -13,27 +14,39 @@ namespace Locacao.Application.Service
     {
         private readonly IReservaService _service;
         private readonly IUnitOfWork _uow;
+        private readonly ReservaFinalizarRequestPatchDtoValidator _reservaFinalizarRequestPatchDtoValidator;
+        private readonly ReservaRequestPostDtoValidator _reservaRequestPostDtoValidator;
+        private readonly ReservaRequestPatchDtoValidator _reservaRequestPatchDtoValidator;
 
         public ReservaAppService(
             IUnitOfWork uow,
+            ReservaRequestPostDtoValidator reservaRequestPostDtoValidator,
+            ReservaRequestPatchDtoValidator reservaRequestPatchDtoValidator,
+            ReservaFinalizarRequestPatchDtoValidator reservaFinalizarRequestPatchDtoValidator,
             IReservaService service)
         {
             _service = service;
             _uow = uow;
+            _reservaFinalizarRequestPatchDtoValidator = reservaFinalizarRequestPatchDtoValidator;
+            _reservaRequestPostDtoValidator = reservaRequestPostDtoValidator;
+            _reservaRequestPatchDtoValidator = reservaRequestPatchDtoValidator;
         }
 
         public async Task<bool> AtualizarReservaClienteAsync(Guid id, ReservaRequestPatchDto reservaData)
         {
+            ValidarRequisicao(reservaData, _reservaRequestPatchDtoValidator);
+
             var reservaModel = FromReservaRequestPatchDtoToReserva.Adapt(reservaData);
 
             await _service.AtualizarReservaClienteAsync(id, reservaModel);
 
             return await _uow.CommitAsync();
-            
         }
 
         public async Task<bool> CadastrarAsync(ReservaRequestPostDto reservaDto)
         {
+            ValidarRequisicao(reservaDto, _reservaRequestPostDtoValidator);
+
             var reserva = FromReservaRequestPostDtoToReserva.Adapt(reservaDto);
 
             await _service.CadastrarAsync(reserva);
@@ -43,6 +56,8 @@ namespace Locacao.Application.Service
 
         public async Task<bool> FinalizarReservaAsync(Guid id, ReservaFinalizarRequestPatchDto reserva)
         {
+            ValidarRequisicao(reserva, _reservaFinalizarRequestPatchDtoValidator);
+
             var reservaModel = FromReservaFinalizarRequestPatchDtoToReserva.Adapt(reserva);
 
             await _service.FinalizarReservaAsync(id, reservaModel);
@@ -69,7 +84,6 @@ namespace Locacao.Application.Service
             var reservasVencidas = await _service.ObterReservasVencidasAsync();
 
             return FromReservaToReservaResponseGetDto.Adapt(reservasVencidas);
-
         }
     }
 }
