@@ -57,5 +57,12 @@ namespace Locacao.Domain.Services
             IEnumerable<Veiculo> veiculos = await _repository.ConsultarPorModeloFabricante(busca);
             return veiculos;
         }
+
+        public async Task VerifyExists(Guid id)
+        {
+            var existVeiculo = await _repository.VerifyExists(id);
+
+            if (!existVeiculo) throw new DomainException("Veiculo não encontrado.");
+        }
     }
 }

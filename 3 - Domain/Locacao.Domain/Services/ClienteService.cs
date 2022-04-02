@@ -13,6 +13,7 @@ namespace Locacao.Domain.Services
     public class ClienteService : BaseService, IClienteService
     {
         protected readonly IClienteRepository _repository;
+
         public ClienteService(IClienteRepository repository)
         {
             _repository = repository;
@@ -58,8 +59,15 @@ namespace Locacao.Domain.Services
             var cliente = await _repository.GetByIdAsync(id);
 
             if (cliente == null) throw new DomainException("Cliente não encontrado.");
-            
+
             return cliente;
+        }
+
+        public async Task VerifyExists(Guid id)
+        {
+            var existCliente = await _repository.VerifyExists(id);
+
+            if (!existCliente) throw new DomainException("Cliente não encontrado.");
         }
     }
 }

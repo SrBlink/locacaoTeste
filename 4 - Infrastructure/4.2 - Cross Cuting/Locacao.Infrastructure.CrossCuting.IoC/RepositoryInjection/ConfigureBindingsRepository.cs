@@ -10,6 +10,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.RepositoryInjection
         {
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+            services.AddScoped<IReservaRepository, ReservaRepository>();
             services.AddScoped<IModeloRepository, ModeloRepository>();
         }
     }

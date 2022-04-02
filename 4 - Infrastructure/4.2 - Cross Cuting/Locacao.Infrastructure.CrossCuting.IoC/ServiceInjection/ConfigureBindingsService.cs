@@ -12,6 +12,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.ServiceInjection
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IVeiculoService, VeiculoService>();
             services.AddScoped<IModeloService, ModeloService>();
+            services.AddScoped<IReservaService, ReservaService>();
             services.AddDbContext<SqlContext>();
         }
     }

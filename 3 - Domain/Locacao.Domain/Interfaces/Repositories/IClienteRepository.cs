@@ -13,5 +13,6 @@ namespace Locacao.Domain.Interfaces.Repositories
         Task<Cliente> GetByIdAsync(Guid id);
         void Update(Cliente cliente);
         Task<Cliente> ObterPorCpfOuCnh(string cpf, string cnh);
+        Task<bool> VerifyExists(Guid id);
     }
 }

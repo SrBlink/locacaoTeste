@@ -13,5 +13,6 @@ namespace Locacao.Domain.Interfaces.Repositories
         Task AddAsync(Veiculo veiculo);
         Task<IEnumerable<Veiculo>> ConsultarPorPlacaAsync(string placa);
         Task<IEnumerable<Veiculo>> ConsultarPorModeloFabricante(string busca);
+        Task<bool> VerifyExists(Guid id);
     }
 }

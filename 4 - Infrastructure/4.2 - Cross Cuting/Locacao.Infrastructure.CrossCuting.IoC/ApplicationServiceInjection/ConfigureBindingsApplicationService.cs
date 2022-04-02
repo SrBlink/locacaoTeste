@@ -10,6 +10,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.ApplicationServiceInjection
         {
             services.AddScoped<IClienteAppService, ClienteAppService>();
             services.AddScoped<IVeiculoAppService, VeiculoAppService>();
+            services.AddScoped<IReservaAppService, ReservaAppService>();
         }
     }
 }
