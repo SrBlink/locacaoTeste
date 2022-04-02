@@ -6,7 +6,7 @@ namespace Locacao.Application.Addapters
 {
     public static class FromVeiculoDtoToVeiculo
     {
-        public static Veiculo Adapt(VeiculoGetDto dto)
+        public static Veiculo Adapt(VeiculoResponseGetDto dto)
         {
             return new Veiculo
             {

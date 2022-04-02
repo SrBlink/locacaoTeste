@@ -3,9 +3,9 @@ using Locacao.Domain.Entities;
 
 namespace Locacao.Application.Addapters
 {
-    public class FromEnderecoDtoToCliente
+    public class FromClienteEnderecoRequestPatchDtoToCliente
     {
-        public static Cliente Adapt(EnderecoDto request)
+        public static Cliente Adapt(ClienteEnderecoRequestPatchDto request)
         {
             return new Cliente
             {

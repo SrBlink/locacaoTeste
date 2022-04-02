@@ -3,6 +3,7 @@ using Locacao.Domain.Interfaces.Repositories;
 using Locacao.Infrastructure.DataAccess.Context;
 using Locacao.Infrastructure.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
         {
         }
 
-        public async Task<IEnumerable<Veiculo>> ConsultarPorModeloFabricante(string busca)
+        public async Task<IEnumerable<Veiculo>> ConsultarPorModeloFabricanteAsync(string busca)
         {
             return await (from veiculo in _context.Veiculo
                           join m in _context.Modelo on veiculo.ModeloId equals m.Id
@@ -54,6 +55,11 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
         public async Task<Veiculo> ObterPorPlacaAsync(string placa)
         {
             return await _context.Veiculo.Where(x => x.Placa.Equals(placa)).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> VerifyExistsAsync(Guid id)
+        {
+            return await _context.Veiculo.Where(x => x.Id == id).AnyAsync();
         }
     }
 }

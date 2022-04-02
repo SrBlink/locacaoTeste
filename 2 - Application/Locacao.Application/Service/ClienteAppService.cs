@@ -1,6 +1,7 @@
 ﻿using Locacao.Application.Addapters;
 using Locacao.Application.Dtos;
 using Locacao.Application.Interfaces;
+using Locacao.Application.Validations;
 using Locacao.Domain.Entities;
 using Locacao.Domain.Interfaces.Services;
 using Locacao.Domain.Interfaces.UoW;
@@ -15,38 +16,49 @@ namespace Locacao.Application.Service
         private readonly IClienteService _service;
         
         private readonly IUnitOfWork _uow;
+        private readonly ClienteRequestPostDtoValidator _clienteRequestPostDtoValidator;
+        private readonly ClienteEnderecoRequestPatchDtoValidator _clienteEnderecoRequestPatchDtoValidator;
 
-        public ClienteAppService(IUnitOfWork uow, IClienteService service)
+        public ClienteAppService(
+                IUnitOfWork uow,
+                IClienteService service,
+                ClienteEnderecoRequestPatchDtoValidator clienteEnderecoRequestPatchDtoValidator,
+                ClienteRequestPostDtoValidator clienteRequestPostDtoValidator
+            )
         {
             _uow = uow;
             _service = service;
+            _clienteRequestPostDtoValidator = clienteRequestPostDtoValidator;
+            _clienteEnderecoRequestPatchDtoValidator = clienteEnderecoRequestPatchDtoValidator;
         }
 
-        public async Task<bool> AtualizarEndereco(Guid id, EnderecoDto endereco)
+        public async Task<bool> AtualizarEnderecoAsync(Guid id, ClienteEnderecoRequestPatchDto endereco)
         {
-            var cliente = FromEnderecoDtoToCliente.Adapt(endereco);
+            ValidarRequisicao(endereco, _clienteEnderecoRequestPatchDtoValidator);
 
-            await _service.UpdateEndereco(id, cliente);
+            var cliente = FromClienteEnderecoRequestPatchDtoToCliente.Adapt(endereco);
+
+            await _service.AtualizarEnderecoAsync(id, cliente);
 
             return await _uow.CommitAsync();
         }
 
-        public async Task<bool> CadastrarAsync(ClienteDto clienteDto)
+        public async Task<bool> CadastrarAsync(ClienteRequestPostDto clienteDto)
         {
-            //validator
+            ValidarRequisicao(clienteDto, _clienteRequestPostDtoValidator);
 
-            var cliente = FromClienteDtoToCliente.Adapt(clienteDto);
+            var cliente = FromClienteRequestPostDtoToCliente.Adapt(clienteDto);
 
             await _service.AddAsync(cliente);
 
             return await _uow.CommitAsync();
         }
 
-        public async Task<IEnumerable<ClienteDto>> ObterAsync(string busca)
+        public async Task<IEnumerable<ClienteResponseGetDto>> ObterAsync(string busca)
         {
-            var cliente = await _service.ObterPorCpfNome(busca);
+            var cliente = await _service.ObterPorCpfNomeAsync(busca);
 
-            return FromClienteToClienteDto.Adapt(cliente);
+            return FromClienteToClienteResponseGetDto.Adapt(cliente);
         }
     }
 }

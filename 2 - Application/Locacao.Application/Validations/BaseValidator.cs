@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Data.SqlTypes;
 
 namespace Locacao.Application.Validations
 {
-    public class BaseValidator
+    public class BaseValidator<T> : AbstractValidator<T>
     {
         protected string MensagemCampoObrigatorio(string campo) => $"O campo {campo} é obrigatorio.";
 
