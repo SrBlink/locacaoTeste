@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Locacao.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20220402204040_ajusteTamanhoPlacaVeiculo")]
-    partial class ajusteTamanhoPlacaVeiculo
+    [Migration("20220403192344_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,13 +140,13 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("54aeb0ea-6412-47fd-b575-36916f4c06bb"),
+                            Id = new Guid("cc93a8db-8c3e-4da1-96e5-41bf8cd976b0"),
                             FabricanteId = new Guid("61d4e90e-6d25-4f7f-864c-431d95fbec68"),
                             Nome = "UNO"
                         },
                         new
                         {
-                            Id = new Guid("851a3734-1990-400b-abeb-9db42cc16cee"),
+                            Id = new Guid("0d5e3bf8-437f-4084-acef-d9f0e4baf482"),
                             FabricanteId = new Guid("10f71d32-9501-4ba1-adbc-80627f206184"),
                             Nome = "AMAROK"
                         },
@@ -158,19 +158,19 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("db8e5f46-a9f3-4c79-9fd7-13f205ce48ea"),
+                            Id = new Guid("238832b6-54c2-462e-bcc2-eaa3b2089ff3"),
                             FabricanteId = new Guid("d764e865-1320-4f1f-8e45-89b85e799f75"),
                             Nome = "R8 GT SPYDER"
                         },
                         new
                         {
-                            Id = new Guid("d71e1fb5-c808-44fd-9039-30ddd93ad75d"),
+                            Id = new Guid("50ad70a2-a931-4726-b61e-4b61ead577b3"),
                             FabricanteId = new Guid("41f0ca61-e30a-44c0-9528-54c8c2da9c97"),
                             Nome = "CITAN"
                         },
                         new
                         {
-                            Id = new Guid("d7f62d69-3de7-4c20-9ed7-38ae5a73f5b5"),
+                            Id = new Guid("fd54f525-4164-4e63-a28d-7c1ddb635c5b"),
                             FabricanteId = new Guid("3cf2a334-7be3-4aca-bb38-d3b5be815e95"),
                             Nome = "CHEROKEE"
                         });
