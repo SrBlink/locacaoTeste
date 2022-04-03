@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Locacao.Application.Dtos
 {
-    public class FabricanteDto
+    public class BaseRequestDto
     {
-        public string Nome { get; set; }
     }
 }

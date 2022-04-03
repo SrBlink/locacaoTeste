@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Locacao.Application.Dtos
 {
-    public class ModeloDto
+    public class FabricanteResponseGetDto
     {
+        public Guid Id { get; set; }
         public string Nome { get; set; }
-
-        public FabricanteDto Fabricante { get; set; }
     }
 }

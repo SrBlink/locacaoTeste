@@ -17,7 +17,7 @@ namespace Locacao.Infrastructure.DataAccess.EntityMap
 
             builder
                 .Property(x => x.Placa)
-                .HasMaxLength(250)
+                .HasMaxLength(7)
                 .IsRequired(true);
 
             builder.HasOne(x => x.Modelo).WithMany().HasForeignKey(x => x.ModeloId);

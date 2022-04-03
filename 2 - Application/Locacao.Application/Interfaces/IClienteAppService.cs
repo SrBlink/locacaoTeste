@@ -8,8 +8,8 @@ namespace Locacao.Application.Interfaces
 {
     public interface IClienteAppService
     {
-        Task<bool> CadastrarAsync(ClienteDto cliente);
-        Task<IEnumerable<ClienteDto>> ObterAsync(string busca);
-        Task<bool> AtualizarEndereco(Guid id, EnderecoDto endereco);
+        Task<bool> CadastrarAsync(ClienteRequestPostDto cliente);
+        Task<IEnumerable<ClienteResponseGetDto>> ObterAsync(string busca);
+        Task<bool> AtualizarEnderecoAsync(Guid id, ClienteEnderecoRequestPatchDto endereco);
     }
 }

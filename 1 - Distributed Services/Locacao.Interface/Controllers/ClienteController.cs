@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locacao.Interface.Controllers
 {
+    [Produces("application/json")]
     [Route("[controller]")]
     [ApiController]
     public class ClienteController : ControllerBase
@@ -18,16 +19,19 @@ namespace Locacao.Interface.Controllers
         }
 
         /// <summary>
-        /// Cadastrar Cliente.
+        /// Cadastrar Cliente
         /// </summary>
-        /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(ClienteDto cliente) {
+        public async Task<IActionResult> Cadastrar(ClienteRequestPostDto cliente) {
             var result = await _clienteAppService.CadastrarAsync(cliente);
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obter cliente por nome ou cpf
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Obter([FromQuery] string busca) {
 
@@ -35,11 +39,15 @@ namespace Locacao.Interface.Controllers
             return Ok(result);
         }
 
-        [HttpPatch("/{id}/endereco")]
-        public async Task<IActionResult> AtualizarEndereco([FromRoute] Guid id , [FromBody] EnderecoDto endereco)
+        /// <summary>
+        /// Atualizar endereco do cliente
+        /// </summary>
+        /// <returns></returns>
+        [HttpPatch("{id}/endereco")]
+        public async Task<IActionResult> AtualizarEndereco([FromRoute] Guid id , [FromBody] ClienteEnderecoRequestPatchDto endereco)
         {
 
-            var result = await _clienteAppService.AtualizarEndereco(id , endereco);
+            var result = await _clienteAppService.AtualizarEnderecoAsync(id , endereco);
             return Ok(result);
         }
 
