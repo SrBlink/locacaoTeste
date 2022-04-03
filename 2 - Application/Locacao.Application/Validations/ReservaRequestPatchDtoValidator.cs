@@ -1,20 +1,25 @@
 ﻿using FluentValidation;
 using Locacao.Application.Dtos;
+using System;
 
 namespace Locacao.Application.Validations
 {
-    public class ReservaRequestPostDtoValidator : BaseValidator<ReservaRequestPostDto>
+    public class ReservaRequestPatchDtoValidator : BaseValidator<ReservaRequestPatchDto>
     {
-        public ReservaRequestPostDtoValidator()
+        public ReservaRequestPatchDtoValidator()
         {
-            RuleFor(x => x.ClienteId)
+            RuleFor(x => x.DataPrevistaDevolucao)
                 .Cascade(CascadeMode.Stop)
-                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Cliente"));
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Prevista Devolução"));
 
-            RuleFor(x => x.VeiculoId)
+            RuleFor(x => x.DataRetirada)
                 .Cascade(CascadeMode.Stop)
-                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Veiculo"));
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Retirada"))
+                .Must(x => x <= DateTime.Now).WithMessage(MensagemDataMaiorQueAtual("Data Retirada"));
 
+            RuleFor(x => x)
+                .Cascade(CascadeMode.Stop)
+                .Must(x => x.DataPrevistaDevolucao > x.DataRetirada).WithMessage(MensagemCampoMenorQueOutro("Data Previsa Devolucao", "Data Retirada"));
         }
     }
 }

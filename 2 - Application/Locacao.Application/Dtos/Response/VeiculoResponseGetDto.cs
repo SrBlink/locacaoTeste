@@ -8,7 +8,6 @@ namespace Locacao.Application.Dtos
     {
         public Guid? Id { get; set; }
         public string Placa { get; set; }
-        public Guid ModeloId { get; set; }
         public ModeloResponseGetDto Modelo { get; set; }
     }
 }

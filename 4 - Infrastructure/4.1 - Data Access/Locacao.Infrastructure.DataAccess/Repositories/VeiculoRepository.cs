@@ -54,7 +54,11 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
 
         public async Task<Veiculo> ObterPorPlacaAsync(string placa)
         {
-            return await _context.Veiculo.Where(x => x.Placa.Equals(placa)).FirstOrDefaultAsync();
+            return await _context.Veiculo
+                         .Where(x => x.Placa.Equals(placa))
+                         .Include(x => x.Modelo)
+                         .ThenInclude(x => x.Fabricante)
+                         .FirstOrDefaultAsync();
         }
 
         public async Task<bool> VerifyExistsAsync(Guid id)

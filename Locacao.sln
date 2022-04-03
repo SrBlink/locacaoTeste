@@ -30,7 +30,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yaml = docker-compose.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locacao.Application", "2 - Application\Locacao.Application\Locacao.Application.csproj", "{5FEB2C2B-8273-4285-8016-E1B57D950720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locacao.Application", "2 - Application\Locacao.Application\Locacao.Application.csproj", "{5FEB2C2B-8273-4285-8016-E1B57D950720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locacao.Application.Tests", "2 - Application\Locacao.Application.Tests\Locacao.Application.Tests.csproj", "{751D16DC-69BF-402F-85D6-81F641AAEE75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{5FEB2C2B-8273-4285-8016-E1B57D950720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FEB2C2B-8273-4285-8016-E1B57D950720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FEB2C2B-8273-4285-8016-E1B57D950720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{751D16DC-69BF-402F-85D6-81F641AAEE75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{751D16DC-69BF-402F-85D6-81F641AAEE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{751D16DC-69BF-402F-85D6-81F641AAEE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{751D16DC-69BF-402F-85D6-81F641AAEE75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{C767903F-5C71-421D-968B-200536BE172F} = {14B4C0FF-EFBF-4D5F-874B-98A7936C9B03}
 		{E67A90EF-C5C9-4236-BC3F-14D104F77F14} = {5E46CE47-506E-4584-9405-925F6B0D9B32}
 		{5FEB2C2B-8273-4285-8016-E1B57D950720} = {96EA00E5-6EFB-43D2-A1B3-9437E7CD4C00}
+		{751D16DC-69BF-402F-85D6-81F641AAEE75} = {96EA00E5-6EFB-43D2-A1B3-9437E7CD4C00}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34D45A78-4B21-490F-AFF3-5B55879E726E}

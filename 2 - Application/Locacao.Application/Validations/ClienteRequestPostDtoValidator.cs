@@ -20,7 +20,7 @@ namespace Locacao.Application.Validations
             RuleFor(x => x.Cpf)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage(MensagemCampoObrigatorio("Cpf"))
-                .MaximumLength(11).WithMessage(MensagemTamanhoMaximoCampo("Cpf", 11))
+                .Length(11).WithMessage(MensagemTamanhoCampo("Cpf", 11))
                 .Must(x => Regex.IsMatch(x, "^[0-9]*$")).WithMessage(MensagemCampoNumerico("Cpf"));
 
             RuleFor(x => x.Cnh)
