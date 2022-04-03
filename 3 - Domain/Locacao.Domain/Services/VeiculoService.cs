@@ -13,11 +13,13 @@ namespace Locacao.Domain.Services
     {
         private readonly IVeiculoRepository _repository;
         private readonly IModeloService _modeloService;
+        private readonly IFabricanteService _fabricanteService;
 
-        public VeiculoService(IVeiculoRepository repository, IModeloService modeloService)
+        public VeiculoService(IVeiculoRepository repository, IModeloService modeloService, IFabricanteService fabricanteService)
         {
             _repository = repository;
             _modeloService = modeloService;
+            _fabricanteService = fabricanteService;
         }
 
         public async Task AddAsync(Veiculo veiculo)
@@ -32,7 +34,15 @@ namespace Locacao.Domain.Services
 
             if (existeVeiculo != null) throw new DomainException("Já existe um veiculo cadastrado com esta placa.");
 
-            await _modeloService.GetByIdAsync(veiculo.ModeloId);
+            var fabricante = await _fabricanteService.GetByNomeAsync(veiculo.Modelo.Fabricante.Nome);
+
+            if (fabricante != null)
+            {
+                veiculo.Modelo.Fabricante = fabricante;
+                var modelo = await _modeloService.GetByNomeAsync(veiculo.Modelo.Nome);
+                if (modelo != null)
+                    veiculo.Modelo = modelo;
+            }
 
             await _repository.AddAsync(veiculo);
         }

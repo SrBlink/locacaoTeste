@@ -40,7 +40,15 @@ namespace Locacao.Application.Tests.Validations
                 MensagemCampoObrigatorio("Data Devolução")
             );
 
-        #endregion Data Retirada
+        [Trait("", "Application/Validations")]
+        [Fact(DisplayName = "CriarReservaFinalizarRequestPatchDtoValidator - Data Devolução maior que data atual")]
+        public void CriarReservaFinalizarRequestPatchDtoValidator_DataDevolucaoMaiorQueAtual() =>
+            Validate_Falha(
+                _fixture.CriarReservaFinalizarRequestPatchDto(dataDevolucao: DateTime.Now.AddDays(1)),
+                _reservaFinalizarRequestPatchDtoValidator,
+                MensagemDataMaiorQueAtual("Data Devolução")
+            );
 
+        #endregion Data Devolucao
     }
 }

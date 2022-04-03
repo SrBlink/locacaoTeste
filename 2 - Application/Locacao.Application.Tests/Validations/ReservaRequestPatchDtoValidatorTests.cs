@@ -40,6 +40,15 @@ namespace Locacao.Application.Tests.Validations
                 MensagemCampoObrigatorio("Data Retirada")
             );
 
+        [Trait("", "Application/Validations")]
+        [Fact(DisplayName = "CriarReservaRequestPatchDtoValidator - Data de Retirada maior que data atual")]
+        public void CriarReservaRequestPatchDtoValidator_DataRetiradaMaiorQueAtual() =>
+            Validate_Falha(
+                _fixture.CriarReservaRequestPatchDto(dataRetirada: DateTime.Now.AddDays(1)),
+                _reservaRequestPatchDtoValidator,
+                MensagemDataMaiorQueAtual("Data Retirada")
+            );
+
         #endregion Data Retirada
 
         #region Data Prevista Devolucao

@@ -25,8 +25,6 @@ namespace Locacao.Domain.Services
         public async Task AtualizarReservaClienteAsync(Guid id, Reserva reservaModel)
         {
 
-            VerificarDatas(reservaModel);
-
             var reserva = await GetByIdAsync(id);
 
             if (reserva.DataDevolucao.HasValue)
@@ -39,14 +37,10 @@ namespace Locacao.Domain.Services
             reserva.DataPrevistaDevolucao = reservaModel.DataPrevistaDevolucao;
 
             _repository.Update(reserva);
-
-
         }
 
         public async Task CadastrarAsync(Reserva reserva)
         {
-            VerificarDatas(reserva);
-
             var reservasPendentes = await ObterReservasPendentesAsync();
 
             var reservaClientePendente = reservasPendentes.Where(x => x.ClienteId == reserva.ClienteId).Any();
@@ -84,16 +78,6 @@ namespace Locacao.Domain.Services
             return reservas;
         }
 
-        private void VerificarDatas(Reserva reserva)
-        {
-            if (reserva.DataRetirada.HasValue && reserva.DataRetirada > DateTime.Now)
-                throw new DomainException("Data de retirada não pode ser maior que a data atual.");
-            if (reserva.DataRetirada.HasValue && reserva.DataPrevistaDevolucao.HasValue && reserva.DataPrevistaDevolucao <= reserva.DataRetirada)
-                throw new DomainException("Data prevista de devolução não pode ser menor nem igual a data de retirada");
-            if (reserva.DataDevolucao.HasValue && reserva.DataDevolucao > DateTime.Now)
-                throw new DomainException("Data de devolução não pode ser maior que a data atual.");
-        }
-
         public async Task<Reserva> GetByIdAsync(Guid id) {
             var reserva = await _repository.GetByIdAsync(id);
             if (reserva == null)
@@ -103,15 +87,13 @@ namespace Locacao.Domain.Services
 
         public async Task FinalizarReservaAsync(Guid id, Reserva reservaModel)
         {
-            VerificarDatas(reservaModel);
-
             var reserva = await GetByIdAsync(id);
 
             if (reserva.DataDevolucao.HasValue)
                 throw new DomainException("Reserva já foi finalizada e não pode ser alterada.");
 
-            if (reservaModel.DataDevolucao < reserva.DataPrevistaDevolucao)
-                throw new DomainException("A data de devolução não pode ser menor que data prevista para devolução.");
+            if (reservaModel.DataDevolucao < reserva.DataRetirada)
+                throw new DomainException("A data de devolução não pode ser menor que data de retirada.");
 
             reserva.DataDevolucao = reservaModel.DataDevolucao;
 

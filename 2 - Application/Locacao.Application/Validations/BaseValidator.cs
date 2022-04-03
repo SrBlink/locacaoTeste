@@ -18,25 +18,11 @@ namespace Locacao.Application.Validations
 
         protected string MensagemTamanhoCampo(string campo, int tamanho) => $"O campo {campo} deve conter {tamanho} caractere(s).";
 
-        protected string MensagemPrecisaoDecimal(string campo, int casasDecimais) => $"O campo {campo} deve conter precisão de {casasDecimais} casas decimais.";
-
-        protected string MensagemFormatoDecimal(string campo, string formato) => $"O campo {campo} deve possuir o formato máximo {formato}.";
-
         protected string MensagemValorMinMax<N>(string campo, N min, N max) => $"O campo {campo} deve conter um valor entre {min} e {max}.";
 
-        protected bool ValidateDecimal(Decimal? valor, int precisao, int escala)
-        {
-            if (!valor.HasValue)
-                return false;
-            if (precisao > 16)
-                precisao = 16;
-            SqlDecimal sqlDecimal = new SqlDecimal(valor.Value);
-            int precision = (int)sqlDecimal.Precision;
-            int scale = (int)sqlDecimal.Scale;
-            int num = scale;
-            return precision - num <= precisao - escala && scale <= escala;
-        }
+        protected string MensagemDataMaiorQueAtual(string campo) => $"O campo {campo} não pode ser maior que a data atual.";
 
-        protected bool ValidateMoney(Decimal? valor) => this.ValidateDecimal(valor, 16, 4);
+        protected string MensagemCampoMenorQueOutro(string campo, string campo2) => $"O campo {campo} não pode ser menor que {campo2}.";
+
     }
 }

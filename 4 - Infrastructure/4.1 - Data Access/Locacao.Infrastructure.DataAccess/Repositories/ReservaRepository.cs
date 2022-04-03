@@ -21,9 +21,7 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
             return await _context.Reserva
                         .Where(x =>
                                x.Data >= dataInicial &&
-                               x.Data <= dataFinal &&
-                               x.DataRetirada != null &&
-                               x.DataDevolucao == null)
+                               x.Data <= dataFinal)
                         .Include(x => x.Cliente)
                         .Include(x => x.Veiculo)
                         .ToListAsync();

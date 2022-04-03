@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Locacao.Application.Dtos;
-using System.Text.RegularExpressions;
 
 namespace Locacao.Application.Validations
 {
@@ -13,11 +12,15 @@ namespace Locacao.Application.Validations
                 .NotEmpty().WithMessage(MensagemCampoObrigatorio("Placa"))
                 .Length(7).WithMessage(MensagemTamanhoCampo("Placa", 7));
 
-            RuleFor(x => x.ModeloId)
+            RuleFor(x => x.ModeloNome)
                 .Cascade(CascadeMode.Stop)
-                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Modelo"));
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Modelo"))
+                .MaximumLength(250).WithMessage(MensagemTamanhoMaximoCampo("Modelo", 250));
 
-            
+            RuleFor(x => x.FabricanteNome)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Fabricante"))
+                .MaximumLength(250).WithMessage(MensagemTamanhoMaximoCampo("Fabricante", 250));
         }
     }
 }

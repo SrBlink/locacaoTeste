@@ -25,7 +25,7 @@ namespace Locacao.Application.Tests.Validations
         [Trait("", "Application/Validations")]
         [Fact(DisplayName = "CriarVeiculoRequestPostDtoValidator - Sucesso")]
         public void CriarVeiculoRequestPostDtoValidator_Sucesso() =>
-            Validate_Sucesso(_fixture.CriarVeiculoRequestPostDto(modeloId: Guid.NewGuid()), _veiculoRequestPostDtoValidator);
+            Validate_Sucesso(_fixture.CriarVeiculoRequestPostDto(), _veiculoRequestPostDtoValidator);
 
         #endregion Sucesso
 
@@ -57,11 +57,42 @@ namespace Locacao.Application.Tests.Validations
         [Fact(DisplayName = "CriarVeiculoRequestPostDtoValidator - Modelo não preenchido")]
         public void CriarVeiculoRequestPostDtoValidator_ModeloNaoPreenchido() =>
             Validate_Falha(
-                _fixture.CriarVeiculoRequestPostDto(modeloId: default),
+                _fixture.CriarVeiculoRequestPostDto(modeloNome: ""),
                 _veiculoRequestPostDtoValidator,
                 MensagemCampoObrigatorio("Modelo")
             );
+
+        [Trait("", "Application/Validations")]
+        [Fact(DisplayName = "CriarVeiculoRequestPostDtoValidator - Modelo acima do tamanho máximo")]
+        public void CriarVeiculoRequestPostDtoValidator_ModeloTamanho() =>
+            Validate_Falha(
+                _fixture.CriarVeiculoRequestPostDto(modeloNome: "".PadLeft(251, 'A')),
+                _veiculoRequestPostDtoValidator,
+                MensagemTamanhoMaximoCampo("Modelo", 250)
+            );
+
         #endregion Modelo
-    
+
+        #region Fabricante
+
+        [Trait("", "Application/Validations")]
+        [Fact(DisplayName = "CriarVeiculoRequestPostDtoValidator - Fabricante não preenchido")]
+        public void CriarVeiculoRequestPostDtoValidator_FabricanteNaoPreenchido() =>
+            Validate_Falha(
+                _fixture.CriarVeiculoRequestPostDto(fabricanteNome: ""),
+                _veiculoRequestPostDtoValidator,
+                MensagemCampoObrigatorio("Fabricante")
+            );
+
+        [Trait("", "Application/Validations")]
+        [Fact(DisplayName = "CriarVeiculoRequestPostDtoValidator - Fabricante acima do tamanho máximo")]
+        public void CriarVeiculoRequestPostDtoValidator_FabricanteTamanho() =>
+            Validate_Falha(
+                _fixture.CriarVeiculoRequestPostDto(fabricanteNome: "".PadLeft(251, 'A')),
+                _veiculoRequestPostDtoValidator,
+                MensagemTamanhoMaximoCampo("Fabricante", 250)
+            );
+
+        #endregion Fabricante
     }
 }

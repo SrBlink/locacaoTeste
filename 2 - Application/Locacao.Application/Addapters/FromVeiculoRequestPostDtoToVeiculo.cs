@@ -11,7 +11,12 @@ namespace Locacao.Application.Addapters
             return new Veiculo
             {
                 Placa = dto.Placa,
-                ModeloId = dto.ModeloId
+                Modelo = new Modelo {
+                    Nome = dto.ModeloNome.ToUpper(),
+                    Fabricante = new Fabricante { 
+                        Nome = dto.FabricanteNome.ToUpper()
+                    }
+                }
             };
         }
     }

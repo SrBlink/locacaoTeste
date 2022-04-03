@@ -27,5 +27,12 @@ namespace Locacao.Domain.Services
             return modelo;
 
         }
+        
+        public async Task<Modelo> GetByNomeAsync(string modeloNome)
+        {
+            var modelo = await _repository.GetByNomeAsync(modeloNome);
+            return modelo;
+            
+        }
     }
 }

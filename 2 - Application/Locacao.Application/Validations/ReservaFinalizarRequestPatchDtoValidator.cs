@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Locacao.Application.Dtos;
+using System;
 
 namespace Locacao.Application.Validations
 {
@@ -9,7 +10,9 @@ namespace Locacao.Application.Validations
         {
             RuleFor(x => x.DataDevolucao)
                 .Cascade(CascadeMode.Stop)
-                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Devolução"));
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Devolução"))
+                .Must(x => x <= DateTime.Now).WithMessage(MensagemDataMaiorQueAtual("Data Devolução"));
+            
 
         }
     }

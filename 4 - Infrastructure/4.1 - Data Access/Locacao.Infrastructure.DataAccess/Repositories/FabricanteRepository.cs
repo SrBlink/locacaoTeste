@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Locacao.Infrastructure.DataAccess.Repositories
 {
-    public class ModeloRepository : BaseRepository<Modelo, SqlContext>, IModeloRepository
+    public class FabricanteRepository : BaseRepository<Fabricante, SqlContext>, IFabricanteRepository
     {
-        public ModeloRepository(SqlContext context) : base(context)
+        public FabricanteRepository(SqlContext context) : base(context)
         {
         }
 
-        public async Task<Modelo> GetByNomeAsync(string modeloNome)
+        public async Task<Fabricante> GetByNomeAsync(string fabricanteNome)
         {
-            return await _context.Modelo.Where(x => x.Nome == modeloNome).Include(x => x.Fabricante).FirstOrDefaultAsync();
+            return await _context.Fabricante.Where(x => x.Nome == fabricanteNome).FirstOrDefaultAsync();
         }
     }
 }

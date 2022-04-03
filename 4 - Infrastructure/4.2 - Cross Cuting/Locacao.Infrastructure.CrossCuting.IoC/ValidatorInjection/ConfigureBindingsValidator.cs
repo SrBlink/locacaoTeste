@@ -12,6 +12,7 @@ namespace Locacao.Infrastructure.CrossCuting.IoC.ValidatorInjection
             services.AddScoped<VeiculoRequestPostDtoValidator>();
             services.AddScoped<ReservaFinalizarRequestPatchDtoValidator>();
             services.AddScoped<ReservaRequestPostDtoValidator>();
+            services.AddScoped<ReservaRequestPatchDtoValidator>();
         }
     }
 }

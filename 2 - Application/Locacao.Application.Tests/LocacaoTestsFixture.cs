@@ -48,21 +48,27 @@ namespace Locacao.Application.Tests
 
         public VeiculoRequestPostDto CriarVeiculoRequestPostDto(
                 string placa = "DNT0123",
-                Guid modeloId = default
+                string modeloNome = "DUEET",
+                string fabricanteNome = "VOLVO"
             ) =>
             new VeiculoRequestPostDto
             {
                 Placa = placa,
-                ModeloId = modeloId
+                ModeloNome = modeloNome,
+                FabricanteNome = fabricanteNome
             };
 
         public ReservaRequestPostDto CriarReservaRequestPostDto(
                 Guid clienteId = default,
-                Guid veiculoId = default
+                Guid veiculoId = default,
+                DateTime? dataRetirada = null,
+                DateTime? dataPrevisaDevolucao = null
             ) => new ReservaRequestPostDto
             {
                 ClienteId = clienteId,
-                VeiculoId = veiculoId
+                VeiculoId = veiculoId,
+                DataRetirada = dataRetirada,
+                DataPrevistaDevolucao = dataPrevisaDevolucao
             };
 
         public ReservaRequestPatchDto CriarReservaRequestPatchDto(
