@@ -1,6 +1,7 @@
 ﻿using AutoMoqCore;
 using Locacao.Application.Dtos;
 using Locacao.Application.Validations;
+using System;
 using Xunit;
 
 namespace Locacao.Application.Tests.Validations
@@ -24,7 +25,7 @@ namespace Locacao.Application.Tests.Validations
         [Trait("", "Application/Validations")]
         [Fact(DisplayName = "ClienteRequestPostDtoValidator - Sucesso")]
         public void ClienteRequestPostDtoValidator_Sucesso() =>
-            Validate_Sucesso(_fixture.CriarClienteRequestPostDto(), _clienteRequestPostDtoValidator);
+            Validate_Sucesso(_fixture.CriarClienteRequestPostDto(dataNascimento: DateTime.Now), _clienteRequestPostDtoValidator);
 
         #endregion Sucesso
 
@@ -71,8 +72,8 @@ namespace Locacao.Application.Tests.Validations
             );
 
         [Trait("", "Application/Validations")]
-        [Fact(DisplayName = "ClienteRequestPostDtoValidator - Cpf acima do tamanho máximo")]
-        public void ClienteRequestPostDtoValidator_CpfMaximo() =>
+        [Fact(DisplayName = "ClienteRequestPostDtoValidator - Cpf tamanho inválido")]
+        public void ClienteRequestPostDtoValidator_CpfTamanho() =>
             Validate_Falha(
                 _fixture.CriarClienteRequestPostDto(cpf: "".PadLeft(10, '4')),
                 _clienteRequestPostDtoValidator,

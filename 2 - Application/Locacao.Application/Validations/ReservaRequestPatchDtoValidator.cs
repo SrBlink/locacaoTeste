@@ -3,17 +3,17 @@ using Locacao.Application.Dtos;
 
 namespace Locacao.Application.Validations
 {
-    public class ReservaRequestPostDtoValidator : BaseValidator<ReservaRequestPostDto>
+    public class ReservaRequestPatchDtoValidator : BaseValidator<ReservaRequestPatchDto>
     {
-        public ReservaRequestPostDtoValidator()
+        public ReservaRequestPatchDtoValidator()
         {
-            RuleFor(x => x.ClienteId)
+            RuleFor(x => x.DataPrevistaDevolucao)
                 .Cascade(CascadeMode.Stop)
-                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Cliente"));
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Prevista Devolução"));
 
-            RuleFor(x => x.VeiculoId)
+            RuleFor(x => x.DataRetirada)
                 .Cascade(CascadeMode.Stop)
-                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Veiculo"));
+                .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Retirada"));
 
         }
     }
