@@ -58,7 +58,7 @@ namespace Locacao.Interface.Configuration
                     }
                     else
                     {
-                        serverUrl = $"https://{httpReq.Headers["Host"]}/";
+                        serverUrl = $"http://{httpReq.Headers["Host"]}/";
                         swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
                     }
                     Console.WriteLine($"SERVER SWAGGER: {serverUrl}");
