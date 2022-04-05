@@ -2,6 +2,7 @@
 using Locacao.Infrastructure.DataAccess.EntityMap;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,7 +20,20 @@ namespace Locacao.Infrastructure.DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = _configuration["ConnectionStrings:locacaoserver"];
+            
+            var connectionString = Environment.GetEnvironmentVariable("LOCACAO_SERVER");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine(connectionString);
+            Console.WriteLine("-----------------------------------------");
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                connectionString = _configuration["ConnectionStrings:locacaoserver"];
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine(connectionString);
+                Console.WriteLine("-----------------------------------------");
+            }
+
             optionsBuilder.UseSqlServer(connectionString);
         }
 

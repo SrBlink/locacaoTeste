@@ -31,6 +31,7 @@ namespace Locacao.Interface
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SqlContext sqlContext)
         {
+            sqlContext.Database.EnsureCreated();
             app.UseApiConfiguration(env);
             app.UseSwaggerConfiguration();
         }
