@@ -46,7 +46,6 @@ namespace Locacao.Interface.Configuration
 
         public static void UseSwaggerConfiguration(this IApplicationBuilder app)
         {
-            var basePath = "";
             app.UseSwagger(options =>
             {
                 options.PreSerializeFilters.Add((swagger, httpReq) =>
@@ -59,8 +58,7 @@ namespace Locacao.Interface.Configuration
                     }
                     else
                     {
-                        basePath = "serverproduction";
-                        serverUrl = $"https://{httpReq.Headers["Host"]}/{basePath}";
+                        serverUrl = $"https://{httpReq.Headers["Host"]}/";
                         swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
                     }
                     Console.WriteLine($"SERVER SWAGGER: {serverUrl}");
@@ -71,8 +69,7 @@ namespace Locacao.Interface.Configuration
             {
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "v1");
                 c.DefaultModelsExpandDepth(-1);
-                if (!string.IsNullOrEmpty(basePath))
-                    c.RoutePrefix = basePath;
+                
             });
         }
     }
