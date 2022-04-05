@@ -22,17 +22,9 @@ namespace Locacao.Infrastructure.DataAccess.Context
         {
 
             var connectionString = Environment.GetEnvironmentVariable("LOCACAO_SERVER");
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine(connectionString);
-            Console.WriteLine("-----------------------------------------");
-
             if (string.IsNullOrEmpty(connectionString))
-            {
                 connectionString = _configuration["ConnectionStrings:locacaoserver"];
-                Console.WriteLine("-----------------------------------------");
-                Console.WriteLine(connectionString);
-                Console.WriteLine("-----------------------------------------");
-            }
+
 
             optionsBuilder.UseSqlServer(connectionString);
         }

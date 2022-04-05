@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Locacao.Infrastructure.DataAccess.Migrations
 {
@@ -123,12 +123,12 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                 columns: new[] { "Id", "FabricanteId", "Nome" },
                 values: new object[,]
                 {
-                    { new Guid("50527a73-71bd-4268-9653-5c45786873aa"), new Guid("61d4e90e-6d25-4f7f-864c-431d95fbec68"), "UNO" },
-                    { new Guid("993b3717-4c4c-4124-a0aa-e789bc1d8bed"), new Guid("10f71d32-9501-4ba1-adbc-80627f206184"), "AMAROK" },
+                    { new Guid("36ac0748-e216-4aff-b36f-183cbea080da"), new Guid("61d4e90e-6d25-4f7f-864c-431d95fbec68"), "UNO" },
+                    { new Guid("0467ffd8-0c81-46ca-87a9-e053babbd422"), new Guid("10f71d32-9501-4ba1-adbc-80627f206184"), "AMAROK" },
                     { new Guid("737b2921-ae1a-4529-acd1-cf0c8ceec90d"), new Guid("6d0d79ba-e365-4a8a-839d-5e7860f5fce9"), "AEROSTAR" },
-                    { new Guid("7c8765d7-3aad-4bbb-8dea-b8aef318782b"), new Guid("d764e865-1320-4f1f-8e45-89b85e799f75"), "R8 GT SPYDER" },
-                    { new Guid("2c72cb94-e22c-45c6-9a0a-f19bce278eaf"), new Guid("41f0ca61-e30a-44c0-9528-54c8c2da9c97"), "CITAN" },
-                    { new Guid("4dbd7f30-8a7b-4268-8672-7285dc9b9bea"), new Guid("3cf2a334-7be3-4aca-bb38-d3b5be815e95"), "CHEROKEE" }
+                    { new Guid("536dc589-0ac2-475d-9d2f-6eee0bf1c7f6"), new Guid("d764e865-1320-4f1f-8e45-89b85e799f75"), "R8 GT SPYDER" },
+                    { new Guid("9d15d8c6-d366-4b07-ba50-33f095546ffe"), new Guid("41f0ca61-e30a-44c0-9528-54c8c2da9c97"), "CITAN" },
+                    { new Guid("ed0c08d8-13bd-4105-acbb-137dfc8a99e5"), new Guid("3cf2a334-7be3-4aca-bb38-d3b5be815e95"), "CHEROKEE" }
                 });
 
             migrationBuilder.InsertData(

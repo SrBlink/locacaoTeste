@@ -21,7 +21,7 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
             return await (from veiculo in _context.Veiculo
                           join m in _context.Modelo on veiculo.ModeloId equals m.Id
                           join f in _context.Fabricante on m.FabricanteId equals f.Id
-                          where EF.Functions.Like(m.Nome, $"%{busca.ToLower()}%") || EF.Functions.Like(f.Nome, $"%{busca.ToLower()}%")
+                          where EF.Functions.Like(m.Nome, $"%{busca}%") || EF.Functions.Like(f.Nome, $"%{busca}%")
                           select new Veiculo
                           {
                               Id = veiculo.Id,
@@ -46,7 +46,7 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
         public async Task<IEnumerable<Veiculo>> ConsultarPorPlacaAsync(string placa)
         {
             return await _context.Veiculo
-                                    .Where(x => EF.Functions.Like(x.Placa, $"%{placa.ToLower()}%"))
+                                    .Where(x => EF.Functions.Like(x.Placa, $"%{placa}%"))
                                     .Include(x => x.Modelo)
                                     .ThenInclude(x => x.Fabricante)
                                     .ToListAsync();

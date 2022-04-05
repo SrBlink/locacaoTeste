@@ -18,7 +18,7 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
 
         public async Task<IEnumerable<Cliente>> ObterPorCpfNomeAsync(string busca)
         {
-            var cliente = await _context.Cliente.Where(x => EF.Functions.Like(x.Nome, $"%{busca.ToLower()}%") || EF.Functions.Like(x.Cpf, $"%{busca.ToLower()}%")).ToListAsync();
+            var cliente = await _context.Cliente.Where(x => EF.Functions.Like(x.Nome, $"%{busca}%") || EF.Functions.Like(x.Cpf, $"%{busca}%")).ToListAsync();
             return cliente;
         }
 
