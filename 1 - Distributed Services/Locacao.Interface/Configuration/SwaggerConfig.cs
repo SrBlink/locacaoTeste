@@ -46,24 +46,7 @@ namespace Locacao.Interface.Configuration
 
         public static void UseSwaggerConfiguration(this IApplicationBuilder app)
         {
-            app.UseSwagger(options =>
-            {
-                options.PreSerializeFilters.Add((swagger, httpReq) =>
-                {
-                    var serverUrl = "";
-                    if (httpReq.Headers["Host"].ToString().Contains("localhost"))
-                    {
-                        serverUrl = $"{httpReq.Scheme}://{httpReq.Host.Value}";
-                        swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
-                    }
-                    else
-                    {
-                        serverUrl = $"http://{httpReq.Headers["Host"]}/";
-                        swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
-                    }
-                    Console.WriteLine($"SERVER SWAGGER: {serverUrl}");
-                });
-            });
+            app.UseSwagger();
 
             app.UseSwaggerUI(c =>
             {
