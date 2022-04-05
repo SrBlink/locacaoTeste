@@ -138,13 +138,13 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cc93a8db-8c3e-4da1-96e5-41bf8cd976b0"),
+                            Id = new Guid("50527a73-71bd-4268-9653-5c45786873aa"),
                             FabricanteId = new Guid("61d4e90e-6d25-4f7f-864c-431d95fbec68"),
                             Nome = "UNO"
                         },
                         new
                         {
-                            Id = new Guid("0d5e3bf8-437f-4084-acef-d9f0e4baf482"),
+                            Id = new Guid("993b3717-4c4c-4124-a0aa-e789bc1d8bed"),
                             FabricanteId = new Guid("10f71d32-9501-4ba1-adbc-80627f206184"),
                             Nome = "AMAROK"
                         },
@@ -156,19 +156,19 @@ namespace Locacao.Infrastructure.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("238832b6-54c2-462e-bcc2-eaa3b2089ff3"),
+                            Id = new Guid("7c8765d7-3aad-4bbb-8dea-b8aef318782b"),
                             FabricanteId = new Guid("d764e865-1320-4f1f-8e45-89b85e799f75"),
                             Nome = "R8 GT SPYDER"
                         },
                         new
                         {
-                            Id = new Guid("50ad70a2-a931-4726-b61e-4b61ead577b3"),
+                            Id = new Guid("2c72cb94-e22c-45c6-9a0a-f19bce278eaf"),
                             FabricanteId = new Guid("41f0ca61-e30a-44c0-9528-54c8c2da9c97"),
                             Nome = "CITAN"
                         },
                         new
                         {
-                            Id = new Guid("fd54f525-4164-4e63-a28d-7c1ddb635c5b"),
+                            Id = new Guid("4dbd7f30-8a7b-4268-8672-7285dc9b9bea"),
                             FabricanteId = new Guid("3cf2a334-7be3-4aca-bb38-d3b5be815e95"),
                             Nome = "CHEROKEE"
                         });

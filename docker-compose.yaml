@@ -1,10 +1,25 @@
 version: "3.8"
 services:
-  sqlServer:
+  apilocacao:
+    build: 
+      dockerfile: "./1 - Distributed Services/Locacao.Interface/Dockerfile"
+      context: .
+    environment:
+      - "LOCACAO_SERVER=Data Source=sqlServer;initial catalog=locacao_dev;persist security info=True;user id=sa; password=@teste123;MultipleActiveResultSets=true;Connection Timeout=120;"
+    networks:
+      - api
+    ports:
+      - "5000:80"
+  sqlserver:
     image: mcr.microsoft.com/mssql/server:2017-latest
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=@teste123
     ports:
-      - "1433:1433"
-    container_name: "Sql-Server"
+      - "1433"
+    container_name: "sql-server"
+    networks:
+      - api
+networks:
+  api:
+    driver: bridge
