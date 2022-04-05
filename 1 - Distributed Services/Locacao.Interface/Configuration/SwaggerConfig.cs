@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -52,7 +51,7 @@ namespace Locacao.Interface.Configuration
             {
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "v1");
                 c.DefaultModelsExpandDepth(-1);
-                
+
             });
         }
     }

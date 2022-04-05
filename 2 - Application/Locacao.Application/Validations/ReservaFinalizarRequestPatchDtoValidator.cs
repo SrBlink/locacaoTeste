@@ -12,7 +12,7 @@ namespace Locacao.Application.Validations
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage(MensagemCampoObrigatorio("Data Devolução"))
                 .Must(x => x <= DateTime.Now).WithMessage(MensagemDataMaiorQueAtual("Data Devolução"));
-            
+
 
         }
     }

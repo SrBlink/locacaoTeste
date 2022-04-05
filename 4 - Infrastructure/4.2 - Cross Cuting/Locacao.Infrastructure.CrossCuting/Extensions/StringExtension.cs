@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -37,7 +36,8 @@ namespace Locacao.Infrastructure.CrossCuting.Extensions
             return Regex.Replace(str, @"[*/.-]", string.Empty).Trim();
         }
 
-        public static string RemoveMaskPlaca(this String str) {
+        public static string RemoveMaskPlaca(this String str)
+        {
             return Regex.Replace(str, @"[?^\W_]", string.Empty).Trim();
         }
 

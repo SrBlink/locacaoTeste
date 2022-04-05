@@ -2,7 +2,6 @@
 using Locacao.Application.Dtos;
 using Locacao.Application.Interfaces;
 using Locacao.Application.Validations;
-using Locacao.Domain.Entities;
 using Locacao.Domain.Interfaces.Services;
 using Locacao.Domain.Interfaces.UoW;
 using System;
@@ -14,7 +13,7 @@ namespace Locacao.Application.Service
     public class ClienteAppService : BaseAppService, IClienteAppService
     {
         private readonly IClienteService _service;
-        
+
         private readonly IUnitOfWork _uow;
         private readonly ClienteRequestPostDtoValidator _clienteRequestPostDtoValidator;
         private readonly ClienteEnderecoRequestPatchDtoValidator _clienteEnderecoRequestPatchDtoValidator;

@@ -1,6 +1,5 @@
 ﻿using Locacao.Application.Dtos;
 using Locacao.Domain.Entities;
-using System;
 
 namespace Locacao.Application.Addapters
 {
@@ -8,7 +7,8 @@ namespace Locacao.Application.Addapters
     {
         public static Cliente Adapt(ClienteRequestPostDto request)
         {
-            return new Cliente() {
+            return new Cliente()
+            {
                 Nome = request.Nome,
                 Cpf = request.Cpf,
                 Cnh = request.Cnh,

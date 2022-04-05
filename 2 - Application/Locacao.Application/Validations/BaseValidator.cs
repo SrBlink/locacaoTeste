@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Data.SqlTypes;
 
 namespace Locacao.Application.Validations
 {

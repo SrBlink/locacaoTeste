@@ -1,7 +1,7 @@
 ﻿using Locacao.Domain.Entities;
+using Locacao.Domain.Exceptions;
 using Locacao.Domain.Interfaces.Repositories;
 using Locacao.Domain.Interfaces.Services;
-using Locacao.Infrastructure.CrossCuting.Exceptions;
 using Locacao.Infrastructure.CrossCuting.Extensions;
 
 using System;

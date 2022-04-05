@@ -6,6 +6,6 @@ namespace Locacao.Domain.Entities
     {
         public Guid FabricanteId { get; set; }
         public string Nome { get; set; }
-        public virtual Fabricante Fabricante { get; set; } 
+        public virtual Fabricante Fabricante { get; set; }
     }
 }

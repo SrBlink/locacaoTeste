@@ -1,6 +1,5 @@
 ﻿using Locacao.Application.Dtos;
 using Locacao.Domain.Entities;
-using System;
 
 namespace Locacao.Application.Addapters
 {
@@ -11,9 +10,11 @@ namespace Locacao.Application.Addapters
             return new Veiculo
             {
                 Placa = dto.Placa,
-                Modelo = new Modelo {
+                Modelo = new Modelo
+                {
                     Nome = dto.ModeloNome.ToUpper(),
-                    Fabricante = new Fabricante { 
+                    Fabricante = new Fabricante
+                    {
                         Nome = dto.FabricanteNome.ToUpper()
                     }
                 }

@@ -1,4 +1,5 @@
-﻿using Locacao.Infrastructure.CrossCuting.DTOs;
+﻿using Locacao.Domain.Exceptions;
+using Locacao.Infrastructure.CrossCuting.DTOs;
 using Locacao.Infrastructure.CrossCuting.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -37,7 +38,7 @@ namespace Locacao.Interface.Middleware
             {
                 await HandleDomainExceptionAsync(context, ex);
             }
-            catch (DomainValidationException ex)
+            catch (ValidationException ex)
             {
                 await HandleValidationExceptionAsync(context, ex);
             }
@@ -57,7 +58,8 @@ namespace Locacao.Interface.Middleware
             if (exception?.Erro != null && exception.Erro.Any())
                 await ResponseError(context, exception.Erro);
         }
-        private async Task HandleValidationExceptionAsync(HttpContext context, DomainValidationException exception)
+
+        private async Task HandleValidationExceptionAsync(HttpContext context, ValidationException exception)
         {
             context.Response.ContentType = CONTENT_TYPE;
             context.Response.StatusCode = (int)exception.Status;

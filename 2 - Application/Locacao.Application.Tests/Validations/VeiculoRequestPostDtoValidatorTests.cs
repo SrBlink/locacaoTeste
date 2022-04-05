@@ -1,7 +1,6 @@
 ﻿using AutoMoqCore;
 using Locacao.Application.Dtos;
 using Locacao.Application.Validations;
-using System;
 using Xunit;
 
 namespace Locacao.Application.Tests.Validations

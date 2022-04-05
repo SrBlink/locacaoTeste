@@ -23,7 +23,8 @@ namespace Locacao.Interface.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(ClienteRequestPostDto cliente) {
+        public async Task<IActionResult> Cadastrar(ClienteRequestPostDto cliente)
+        {
             var result = await _clienteAppService.CadastrarAsync(cliente);
             return Ok(result);
         }
@@ -33,7 +34,8 @@ namespace Locacao.Interface.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Obter([FromQuery] string busca) {
+        public async Task<IActionResult> Obter([FromQuery] string busca)
+        {
 
             var result = await _clienteAppService.ObterAsync(busca);
             return Ok(result);
@@ -44,10 +46,10 @@ namespace Locacao.Interface.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPatch("{id}/endereco")]
-        public async Task<IActionResult> AtualizarEndereco([FromRoute] Guid id , [FromBody] ClienteEnderecoRequestPatchDto endereco)
+        public async Task<IActionResult> AtualizarEndereco([FromRoute] Guid id, [FromBody] ClienteEnderecoRequestPatchDto endereco)
         {
 
-            var result = await _clienteAppService.AtualizarEnderecoAsync(id , endereco);
+            var result = await _clienteAppService.AtualizarEnderecoAsync(id, endereco);
             return Ok(result);
         }
 

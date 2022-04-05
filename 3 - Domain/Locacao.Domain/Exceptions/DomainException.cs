@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
-namespace Locacao.Infrastructure.CrossCuting.Exceptions
+namespace Locacao.Domain.Exceptions
 {
-    public  class DomainException : Exception
+    public class DomainException : Exception
     {
         public HttpStatusCode Status { get; private set; }
         public string Erro { get; private set; }

@@ -61,7 +61,7 @@ namespace Locacao.Application.Tests.Validations
         [Fact(DisplayName = "CriarReservaRequestPostDtoValidator - Data de Retirada não informada")]
         public void CriarReservaRequestPostDtoValidator_DataRetiradaNaoPreenchido() =>
             Validate_Falha(
-                _fixture.CriarReservaRequestPostDto(dataRetirada: null, dataPrevisaDevolucao : DateTime.Now),
+                _fixture.CriarReservaRequestPostDto(dataRetirada: null, dataPrevisaDevolucao: DateTime.Now),
                 _reservaRequestPostDtoValidator,
                 MensagemCampoObrigatorio("Data Retirada")
             );
@@ -85,7 +85,7 @@ namespace Locacao.Application.Tests.Validations
             Validate_Falha(
                 _fixture.CriarReservaRequestPostDto(dataRetirada: DateTime.Now, dataPrevisaDevolucao: DateTime.Now.AddDays(-1)),
                 _reservaRequestPostDtoValidator,
-                MensagemCampoMenorQueOutro("Data Prevista Devolução",  "Data Retirada")
+                MensagemCampoMenorQueOutro("Data Prevista Devolução", "Data Retirada")
             );
 
 

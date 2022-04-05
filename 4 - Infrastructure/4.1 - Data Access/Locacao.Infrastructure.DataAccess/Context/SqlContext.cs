@@ -20,7 +20,7 @@ namespace Locacao.Infrastructure.DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
+
             var connectionString = Environment.GetEnvironmentVariable("LOCACAO_SERVER");
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine(connectionString);

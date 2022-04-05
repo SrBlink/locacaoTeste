@@ -1,12 +1,11 @@
 using Locacao.Application.Dtos;
 using Locacao.Application.Validations;
-using System;
 using System.Linq;
 using Xunit;
 
 namespace Locacao.Application.Tests.Validations
 {
-    public class BaseTests<TRequest,TValidator>
+    public class BaseTests<TRequest, TValidator>
         where TRequest : BaseRequestDto
         where TValidator : BaseValidator<TRequest>
     {

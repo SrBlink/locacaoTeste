@@ -28,7 +28,8 @@ namespace Locacao.Infrastructure.DataAccess.Repositories
             return cliente;
         }
 
-        public async Task<bool> VerifyExistsAsync(Guid id) {
+        public async Task<bool> VerifyExistsAsync(Guid id)
+        {
             return await _context.Cliente.Where(x => x.Id == id).AnyAsync();
         }
     }

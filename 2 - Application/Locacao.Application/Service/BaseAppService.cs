@@ -2,7 +2,6 @@
 using Locacao.Application.Validations;
 using Locacao.Infrastructure.CrossCuting.Exceptions;
 using System.Linq;
-using System.Net;
 
 namespace Locacao.Application.Service
 {
@@ -20,7 +19,7 @@ namespace Locacao.Application.Service
 
             if (!validationResult.IsValid)
             {
-                throw new DomainValidationException(validationResult.Errors.Select(x => x.ErrorMessage).ToList());
+                throw new ValidationException(validationResult.Errors.Select(x => x.ErrorMessage).ToList());
             }
         }
     }

@@ -23,7 +23,8 @@ namespace Locacao.Interface.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(ReservaRequestPostDto reserva) {
+        public async Task<IActionResult> Cadastrar(ReservaRequestPostDto reserva)
+        {
             var result = await _appService.CadastrarAsync(reserva);
             return Ok(result);
         }
@@ -46,7 +47,7 @@ namespace Locacao.Interface.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterReservas([FromQuery] DateTime dataInicial, DateTime dataFinal)
         {
-            var result = await _appService.ObterReservasAsync(dataInicial,dataFinal);
+            var result = await _appService.ObterReservasAsync(dataInicial, dataFinal);
             return Ok(result);
         }
 
@@ -66,9 +67,9 @@ namespace Locacao.Interface.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPatch("{id}/cliente")]
-        public async Task<IActionResult> AtualizarReservaCliente([FromRoute] Guid id,ReservaRequestPatchDto reservaData )
+        public async Task<IActionResult> AtualizarReservaCliente([FromRoute] Guid id, ReservaRequestPatchDto reservaData)
         {
-            var result = await _appService.AtualizarReservaClienteAsync(id , reservaData);
+            var result = await _appService.AtualizarReservaClienteAsync(id, reservaData);
             return Ok(result);
         }
 
@@ -79,7 +80,7 @@ namespace Locacao.Interface.Controllers
         [HttpPatch("{id}/finalizar")]
         public async Task<IActionResult> FinalizarReserva([FromRoute] Guid id, ReservaFinalizarRequestPatchDto reserva)
         {
-            var result = await _appService.FinalizarReservaAsync(id,reserva);
+            var result = await _appService.FinalizarReservaAsync(id, reserva);
             return Ok(result);
         }
     }

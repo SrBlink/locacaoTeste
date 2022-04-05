@@ -1,7 +1,6 @@
 ﻿using Locacao.Application.Dtos;
 using Locacao.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace Locacao.Interface.Controllers
@@ -23,7 +22,8 @@ namespace Locacao.Interface.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(VeiculoRequestPostDto veiculo) {
+        public async Task<IActionResult> Cadastrar(VeiculoRequestPostDto veiculo)
+        {
             var result = await _appService.CadastrarAsync(veiculo);
             return Ok(result);
         }

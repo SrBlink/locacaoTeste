@@ -1,7 +1,7 @@
 ﻿using Locacao.Domain.Entities;
+using Locacao.Domain.Exceptions;
 using Locacao.Domain.Interfaces.Repositories;
 using Locacao.Domain.Interfaces.Services;
-using Locacao.Infrastructure.CrossCuting.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,6 @@ namespace Locacao.Domain.Services
 
         public async Task AtualizarReservaClienteAsync(Guid id, Reserva reservaModel)
         {
-
             var reserva = await GetByIdAsync(id);
 
             if (reserva.DataDevolucao.HasValue)
@@ -78,7 +77,8 @@ namespace Locacao.Domain.Services
             return reservas;
         }
 
-        public async Task<Reserva> GetByIdAsync(Guid id) {
+        public async Task<Reserva> GetByIdAsync(Guid id)
+        {
             var reserva = await _repository.GetByIdAsync(id);
             if (reserva == null)
                 throw new DomainException("Reserva não encontrada.");
@@ -98,7 +98,6 @@ namespace Locacao.Domain.Services
             reserva.DataDevolucao = reservaModel.DataDevolucao;
 
             _repository.Update(reserva);
-
         }
 
         public async Task<IEnumerable<Reserva>> ObterReservasVencidasAsync()

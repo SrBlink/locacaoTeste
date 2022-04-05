@@ -1,5 +1,4 @@
-﻿using Locacao.Application.Validations;
-using System;
+﻿using System;
 
 namespace Locacao.Application.Dtos
 {
