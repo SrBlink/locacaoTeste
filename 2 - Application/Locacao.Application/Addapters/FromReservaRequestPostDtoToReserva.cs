@@ -13,8 +13,6 @@ namespace Locacao.Application.Addapters
                 Data = DateTime.Now,
                 ClienteId = dto.ClienteId,
                 VeiculoId = dto.VeiculoId,
-                DataRetirada = dto.DataRetirada,
-                DataPrevistaDevolucao = dto.DataPrevistaDevolucao,
             };
         }
     }

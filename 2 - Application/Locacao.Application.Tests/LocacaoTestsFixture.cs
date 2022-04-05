@@ -60,15 +60,11 @@ namespace Locacao.Application.Tests
 
         public ReservaRequestPostDto CriarReservaRequestPostDto(
                 Guid clienteId = default,
-                Guid veiculoId = default,
-                DateTime? dataRetirada = null,
-                DateTime? dataPrevisaDevolucao = null
+                Guid veiculoId = default
             ) => new ReservaRequestPostDto
             {
                 ClienteId = clienteId,
                 VeiculoId = veiculoId,
-                DataRetirada = dataRetirada,
-                DataPrevistaDevolucao = dataPrevisaDevolucao
             };
 
         public ReservaRequestPatchDto CriarReservaRequestPatchDto(

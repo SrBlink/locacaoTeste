@@ -55,41 +55,5 @@ namespace Locacao.Application.Tests.Validations
 
         #endregion Veiculo
 
-        #region DataRetirada
-
-        [Trait("", "Application/Validations")]
-        [Fact(DisplayName = "CriarReservaRequestPostDtoValidator - Data de Retirada não informada")]
-        public void CriarReservaRequestPostDtoValidator_DataRetiradaNaoPreenchido() =>
-            Validate_Falha(
-                _fixture.CriarReservaRequestPostDto(dataRetirada: null, dataPrevisaDevolucao: DateTime.Now),
-                _reservaRequestPostDtoValidator,
-                MensagemCampoObrigatorio("Data Retirada")
-            );
-
-        [Trait("", "Application/Validations")]
-        [Fact(DisplayName = "CriarReservaRequestPostDtoValidator - Data de Retirada maior que data atual")]
-        public void CriarReservaRequestPostDtoValidator_DataRetiradaMaiorQueAtual() =>
-            Validate_Falha(
-                _fixture.CriarReservaRequestPostDto(dataRetirada: DateTime.Now.AddDays(1)),
-                _reservaRequestPostDtoValidator,
-                MensagemDataMaiorQueAtual("Data Retirada")
-            );
-
-        #endregion
-
-        #region Data Prevista Devolucao
-
-        [Trait("", "Application/Validations")]
-        [Fact(DisplayName = "CriarReservaRequestPostDtoValidator - Data Prevista Devolução menor que data retirada")]
-        public void CriarReservaRequestPostDtoValidator_DataPrevistaDevolucaoAnteriorData() =>
-            Validate_Falha(
-                _fixture.CriarReservaRequestPostDto(dataRetirada: DateTime.Now, dataPrevisaDevolucao: DateTime.Now.AddDays(-1)),
-                _reservaRequestPostDtoValidator,
-                MensagemCampoMenorQueOutro("Data Prevista Devolução", "Data Retirada")
-            );
-
-
-        #endregion
-
     }
 }
